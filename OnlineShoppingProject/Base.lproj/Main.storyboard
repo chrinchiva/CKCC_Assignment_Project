@@ -1403,6 +1403,65 @@
             </objects>
             <point key="canvasLocation" x="858.39999999999998" y="1190.5547226386807"/>
         </scene>
+        <!--New Example View Controller-->
+        <scene sceneID="FFE-DL-jRZ">
+            <objects>
+                <viewController id="YAG-zU-3Ss" customClass="newExampleViewController" customModule="OnlineShoppingProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KPB-X3-iiW"/>
+                        <viewControllerLayoutGuide type="bottom" id="RIy-aT-QcK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gmd-R3-tIf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yUH-Uk-wfd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="247"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="icz-RX-Psv">
+                                    <size key="itemSize" width="151" height="165"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell_example" id="C9m-ax-SPy" customClass="newCollectionViewCell" customModule="OnlineShoppingProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="41" width="151" height="165"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="165"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-Bs-hVg">
+                                                    <rect key="frame" x="2" y="7" width="147" height="109"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageViewCell" destination="wjd-Bs-hVg" id="xdW-i4-HKP"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="YAG-zU-3Ss" id="el4-c4-bsr"/>
+                                    <outlet property="delegate" destination="YAG-zU-3Ss" id="5mo-pt-0Pf"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RIy-aT-QcK" firstAttribute="top" secondItem="yUH-Uk-wfd" secondAttribute="bottom" constant="400" id="Mfv-jy-DZ7"/>
+                            <constraint firstAttribute="trailing" secondItem="yUH-Uk-wfd" secondAttribute="trailing" id="RyY-ez-MAQ"/>
+                            <constraint firstItem="yUH-Uk-wfd" firstAttribute="leading" secondItem="Gmd-R3-tIf" secondAttribute="leading" id="fZp-af-gBT"/>
+                            <constraint firstItem="yUH-Uk-wfd" firstAttribute="top" secondItem="KPB-X3-iiW" secondAttribute="bottom" id="l4W-OI-zxs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ub5-cC-Eiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797.60000000000002" y="1987.5562218890557"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1.jpg" width="375" height="130"/>
