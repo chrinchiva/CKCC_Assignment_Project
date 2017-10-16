@@ -11,6 +11,7 @@
 		E208B3C01F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208B3BF1F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift */; };
 		E209355A1F8E302D007E387A /* newExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20935591F8E302D007E387A /* newExampleViewController.swift */; };
 		E209355C1F8E304A007E387A /* newCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E209355B1F8E304A007E387A /* newCollectionViewCell.swift */; };
+		E20935821F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E20935801F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld */; };
 		E20CA0671F8B69220031B1DE /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA0661F8B69220031B1DE /* SearchListViewController.swift */; };
 		E20CA0691F8B6A760031B1DE /* SearchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA0681F8B6A760031B1DE /* SearchListTableViewCell.swift */; };
 		E20CA06B1F8B6D350031B1DE /* MSIPC.png in Resources */ = {isa = PBXBuildFile; fileRef = E20CA06A1F8B6D350031B1DE /* MSIPC.png */; };
@@ -49,6 +50,9 @@
 		E28234C61F894FBB00518894 /* Nokia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28234C31F894FBB00518894 /* Nokia.jpg */; };
 		E28234CD1F8957AA00518894 /* recentlyViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28234CC1F8957AA00518894 /* recentlyViewFooter.xib */; };
 		E28234CF1F895AB600518894 /* cellRecentlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28234CE1F895AB600518894 /* cellRecentlyTableViewCell.swift */; };
+		E29BC7031F927D7800930334 /* sellerProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BC7021F927D7800930334 /* sellerProductViewController.swift */; };
+		E2A57ECA1F9270AB00D3C307 /* sellProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */; };
+		E2E1CDE51F934B39004CBC1A /* provinceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,7 @@
 		E208B3BF1F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewcontrolllerCartTableViewCell.swift; sourceTree = "<group>"; };
 		E20935591F8E302D007E387A /* newExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newExampleViewController.swift; sourceTree = "<group>"; };
 		E209355B1F8E304A007E387A /* newCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCollectionViewCell.swift; sourceTree = "<group>"; };
+		E20935811F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnlineShoppingProject.xcdatamodel; sourceTree = "<group>"; };
 		E20CA0661F8B69220031B1DE /* SearchListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		E20CA0681F8B6A760031B1DE /* SearchListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListTableViewCell.swift; sourceTree = "<group>"; };
 		E20CA06A1F8B6D350031B1DE /* MSIPC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSIPC.png; sourceTree = "<group>"; };
@@ -96,6 +101,9 @@
 		E28234C31F894FBB00518894 /* Nokia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Nokia.jpg; sourceTree = "<group>"; };
 		E28234CC1F8957AA00518894 /* recentlyViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = recentlyViewFooter.xib; sourceTree = "<group>"; };
 		E28234CE1F895AB600518894 /* cellRecentlyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellRecentlyTableViewCell.swift; sourceTree = "<group>"; };
+		E29BC7021F927D7800930334 /* sellerProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellerProductViewController.swift; sourceTree = "<group>"; };
+		E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellProductTableViewCell.swift; sourceTree = "<group>"; };
+		E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = provinceNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 			children = (
 				E28234CB1F89512C00518894 /* Offline view */,
 				E2106BF61F84EF4C000F79D3 /* AppDelegate.swift */,
+				E28234CE1F895AB600518894 /* cellRecentlyTableViewCell.swift */,
 				E2106BF81F84EF4C000F79D3 /* RootViewController.swift */,
 				E2106BFA1F84EF4C000F79D3 /* DataViewController.swift */,
 				E2106BFC1F84EF4C000F79D3 /* ModelController.swift */,
@@ -140,6 +149,7 @@
 				E2106C0C1F84F2DF000F79D3 /* LoginViewController.swift */,
 				E2106C0E1F850A09000F79D3 /* HomeViewController.swift */,
 				E2106C101F850D8B000F79D3 /* CourseCollectionViewCell.xib */,
+				E20935801F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld */,
 			);
 			path = OnlineShoppingProject;
 			sourceTree = "<group>";
@@ -185,8 +195,10 @@
 				E20CA0701F8B74440031B1DE /* CategoryTableViewCell.swift */,
 				E209355B1F8E304A007E387A /* newCollectionViewCell.swift */,
 				E20935591F8E302D007E387A /* newExampleViewController.swift */,
+				E29BC7021F927D7800930334 /* sellerProductViewController.swift */,
+				E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */,
+				E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */,
 				E28234C81F894FCB00518894 /* Images */,
-				E28234CE1F895AB600518894 /* cellRecentlyTableViewCell.swift */,
 			);
 			name = "Offline view";
 			sourceTree = "<group>";
@@ -290,7 +302,10 @@
 				E20EED5B1F8A1E6000F1602E /* SearchHistoryViewController.swift in Sources */,
 				E28234CF1F895AB600518894 /* cellRecentlyTableViewCell.swift in Sources */,
 				E2106BFD1F84EF4C000F79D3 /* ModelController.swift in Sources */,
+				E20935821F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld in Sources */,
 				E20CA0671F8B69220031B1DE /* SearchListViewController.swift in Sources */,
+				E2A57ECA1F9270AB00D3C307 /* sellProductTableViewCell.swift in Sources */,
+				E2E1CDE51F934B39004CBC1A /* provinceNameViewController.swift in Sources */,
 				E20CA0711F8B74440031B1DE /* CategoryTableViewCell.swift in Sources */,
 				E20EED5D1F8A1EFC00F1602E /* SearchHistories.swift in Sources */,
 				E209355C1F8E304A007E387A /* newCollectionViewCell.swift in Sources */,
@@ -299,6 +314,7 @@
 				E2106C0D1F84F2DF000F79D3 /* LoginViewController.swift in Sources */,
 				E20CA0691F8B6A760031B1DE /* SearchListTableViewCell.swift in Sources */,
 				E208B3BC1F8A691D00F79403 /* CartViewController.swift in Sources */,
+				E29BC7031F927D7800930334 /* sellerProductViewController.swift in Sources */,
 				E2106BF71F84EF4C000F79D3 /* AppDelegate.swift in Sources */,
 				E2106C0F1F850A09000F79D3 /* HomeViewController.swift in Sources */,
 				E209355A1F8E302D007E387A /* newExampleViewController.swift in Sources */,
@@ -471,6 +487,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E20935801F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E20935811F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodel */,
+			);
+			currentVersion = E20935811F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodel */;
+			path = OnlineShoppingProject.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E2106BEB1F84EF4C000F79D3 /* Project object */;
 }

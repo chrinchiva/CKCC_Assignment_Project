@@ -21,7 +21,7 @@ var myIndex = 0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
-        performSegue(withIdentifier: "cell_categories_viewdetail", sender: self)
+        performSegue(withIdentifier: "segue_all_category", sender: self)
     }
     
 }
