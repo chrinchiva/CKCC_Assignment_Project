@@ -9,7 +9,7 @@
 import UIKit
 
 class provinceNameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    var provinceName:[String] = ["Phnom Penh","Sihanouk"]
+    var provinceName:[String] = ["Phnom Penh","Sihanouk","Takeo","Kandal","Battombong","Prey Veng","Kom Pong Speu","Svay Reang","Phnom Penh","Sihanouk","Takeo","Kandal","Battombong","Prey Veng","Kom Pong Speu","Svay Reang"]
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -36,6 +36,8 @@
 		E20EED641F8A322D00F1602E /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E20EED601F8A322D00F1602E /* 3.jpg */; };
 		E20EED651F8A322D00F1602E /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E20EED611F8A322D00F1602E /* 4.jpg */; };
 		E20EED671F8A34A600F1602E /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */; };
+		E20EF1851F9A639E000FA848 /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20EF1841F9A639E000FA848 /* DetailProductViewController.swift */; };
+		E20EF1871F9A7835000FA848 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */; };
 		E2106BF71F84EF4C000F79D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2106BF61F84EF4C000F79D3 /* AppDelegate.swift */; };
 		E2106BF91F84EF4C000F79D3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2106BF81F84EF4C000F79D3 /* RootViewController.swift */; };
 		E2106BFB1F84EF4C000F79D3 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2106BFA1F84EF4C000F79D3 /* DataViewController.swift */; };
@@ -85,6 +87,11 @@
 		E20EED601F8A322D00F1602E /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		E20EED611F8A322D00F1602E /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		E20EF1841F9A639E000FA848 /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
+		E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		E20EF1881F9A8529000FA848 /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImage.jpg; sourceTree = "<group>"; };
+		E20EF1891F9A8625000FA848 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
+		E20EF18A1F9A8684000FA848 /* blankImage.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = blankImage.svg; sourceTree = "<group>"; };
 		E2106BF31F84EF4C000F79D3 /* OnlineShoppingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShoppingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2106BF61F84EF4C000F79D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2106BF81F84EF4C000F79D3 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -136,14 +143,14 @@
 		E2106BF51F84EF4C000F79D3 /* OnlineShoppingProject */ = {
 			isa = PBXGroup;
 			children = (
+				E2106BFE1F84EF4C000F79D3 /* Main.storyboard */,
+				E2106C011F84EF4C000F79D3 /* Assets.xcassets */,
 				E28234CB1F89512C00518894 /* Offline view */,
 				E2106BF61F84EF4C000F79D3 /* AppDelegate.swift */,
 				E28234CE1F895AB600518894 /* cellRecentlyTableViewCell.swift */,
 				E2106BF81F84EF4C000F79D3 /* RootViewController.swift */,
 				E2106BFA1F84EF4C000F79D3 /* DataViewController.swift */,
 				E2106BFC1F84EF4C000F79D3 /* ModelController.swift */,
-				E2106BFE1F84EF4C000F79D3 /* Main.storyboard */,
-				E2106C011F84EF4C000F79D3 /* Assets.xcassets */,
 				E2106C031F84EF4C000F79D3 /* LaunchScreen.storyboard */,
 				E2106C061F84EF4C000F79D3 /* Info.plist */,
 				E2106C0C1F84F2DF000F79D3 /* LoginViewController.swift */,
@@ -157,6 +164,9 @@
 		E28234C81F894FCB00518894 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E20EF18A1F9A8684000FA848 /* blankImage.svg */,
+				E20EF1891F9A8625000FA848 /* noimage.png */,
+				E20EF1881F9A8529000FA848 /* noImage.jpg */,
 				E20CA06C1F8B72960031B1DE /* iconPhone.png */,
 				E20CA06A1F8B6D350031B1DE /* MSIPC.png */,
 				E20EED5E1F8A322D00F1602E /* 1.jpg */,
@@ -183,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				E28234CC1F8957AA00518894 /* recentlyViewFooter.xib */,
+				E20EF1841F9A639E000FA848 /* DetailProductViewController.swift */,
+				E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */,
 				E20EED5A1F8A1E6000F1602E /* SearchHistoryViewController.swift */,
 				E20EED5C1F8A1EFC00F1602E /* SearchHistories.swift */,
 				E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */,
@@ -299,6 +311,7 @@
 				E2106BF91F84EF4C000F79D3 /* RootViewController.swift in Sources */,
 				E208B3C01F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift in Sources */,
 				E20CA06F1F8B72E70031B1DE /* CategoryTableViewController.swift in Sources */,
+				E20EF1871F9A7835000FA848 /* DetailCollectionViewCell.swift in Sources */,
 				E20EED5B1F8A1E6000F1602E /* SearchHistoryViewController.swift in Sources */,
 				E28234CF1F895AB600518894 /* cellRecentlyTableViewCell.swift in Sources */,
 				E2106BFD1F84EF4C000F79D3 /* ModelController.swift in Sources */,
@@ -317,6 +330,7 @@
 				E29BC7031F927D7800930334 /* sellerProductViewController.swift in Sources */,
 				E2106BF71F84EF4C000F79D3 /* AppDelegate.swift in Sources */,
 				E2106C0F1F850A09000F79D3 /* HomeViewController.swift in Sources */,
+				E20EF1851F9A639E000FA848 /* DetailProductViewController.swift in Sources */,
 				E209355A1F8E302D007E387A /* newExampleViewController.swift in Sources */,
 				E20EED671F8A34A600F1602E /* HomeScreenViewController.swift in Sources */,
 			);
