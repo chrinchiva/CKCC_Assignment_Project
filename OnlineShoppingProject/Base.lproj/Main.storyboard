@@ -971,10 +971,10 @@
             </objects>
             <point key="canvasLocation" x="2974" y="511"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Logoin form-->
         <scene sceneID="jYP-Tm-HGl">
             <objects>
-                <viewController id="rN4-Kj-XDG" customClass="LoginViewController" customModule="OnlineShoppingProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Logoin form" id="rN4-Kj-XDG" customClass="LoginViewController" customModule="OnlineShoppingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uaQ-eZ-hU8"/>
                         <viewControllerLayoutGuide type="bottom" id="2wg-lq-FKU"/>

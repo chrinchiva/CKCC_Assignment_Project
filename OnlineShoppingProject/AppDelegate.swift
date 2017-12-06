@@ -5,15 +5,17 @@
 //  Created by petersoeun on 10/11/17.
 //  Copyright © 2017 RoboCam. All rights reserved.
 //
+// ID: onlineshoppingproject-a377a
 
 import UIKit
 import CoreData
-
+import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
     
