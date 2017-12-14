@@ -7,5 +7,9 @@ target 'OnlineShoppingProject' do
 
   # Pods for OnlineShoppingProject
  	pod 'Firebase/Core'
-
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'Firebase/Storage'
 end

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 // customer information
 var homeIndex: Int = 0
 var title=["iPhone5","Computer Dell"]

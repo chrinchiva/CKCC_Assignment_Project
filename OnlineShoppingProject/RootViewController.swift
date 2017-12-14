@@ -1,11 +1,3 @@
-//
-//  RootViewController.swift
-//  OnlineShoppingProject
-//
-//  Created by petersoeun on 10/4/17.
-//  Copyright © 2017 RoboCam. All rights reserved.
-//
-
 import UIKit
 
 class RootViewController: UIViewController, UIPageViewControllerDelegate {
@@ -87,4 +79,3 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
 
 }
-
