@@ -62,6 +62,10 @@
 		E2A57ECA1F9270AB00D3C307 /* sellProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */; };
 		E2DD9A181FE2CDCC005AF87B /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A171FE2CDCC005AF87B /* MyApp.swift */; };
 		E2DD9A1C1FE2DE0F005AF87B /* ImageUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */; };
+		E2DD9A1E1FE2EC07005AF87B /* NewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */; };
+		E2DD9A201FE2F014005AF87B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A1F1FE2F014005AF87B /* LogInViewController.swift */; };
+		E2E15EBD1FE3889C00FDE70D /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E15EBC1FE3889C00FDE70D /* loginController.swift */; };
+		E2E15EBF1FE3987300FDE70D /* profileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E15EBE1FE3987300FDE70D /* profileController.swift */; };
 		E2E1CDE51F934B39004CBC1A /* provinceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +130,10 @@
 		E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellProductTableViewCell.swift; sourceTree = "<group>"; };
 		E2DD9A171FE2CDCC005AF87B /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadManager.swift; sourceTree = "<group>"; };
+		E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginViewController.swift; sourceTree = "<group>"; };
+		E2DD9A1F1FE2F014005AF87B /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		E2E15EBC1FE3889C00FDE70D /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
+		E2E15EBE1FE3987300FDE70D /* profileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileController.swift; sourceTree = "<group>"; };
 		E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = provinceNameViewController.swift; sourceTree = "<group>"; };
 		E2F2618F1FB9C36B00EFFE32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D5E50BEB1089701EE33F44 /* Pods_OnlineShoppingProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineShoppingProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +218,10 @@
 				E255647E1FD80AE400B2765D /* LoginFirebaseViewController.swift */,
 				E2DD9A171FE2CDCC005AF87B /* MyApp.swift */,
 				E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */,
+				E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */,
+				E2DD9A1F1FE2F014005AF87B /* LogInViewController.swift */,
+				E2E15EBC1FE3889C00FDE70D /* loginController.swift */,
+				E2E15EBE1FE3987300FDE70D /* profileController.swift */,
 			);
 			name = Online;
 			path = ..;
@@ -434,12 +446,14 @@
 			files = (
 				E27FAB881FA0BA2400D226DB /* Article.swift in Sources */,
 				E2106BF91F84EF4C000F79D3 /* RootViewController.swift in Sources */,
+				E2DD9A201FE2F014005AF87B /* LogInViewController.swift in Sources */,
 				E208B3C01F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift in Sources */,
 				E2DD9A1C1FE2DE0F005AF87B /* ImageUploadManager.swift in Sources */,
 				E20CA06F1F8B72E70031B1DE /* CategoryTableViewController.swift in Sources */,
 				E20EF1871F9A7835000FA848 /* DetailCollectionViewCell.swift in Sources */,
 				E20EED5B1F8A1E6000F1602E /* SearchHistoryViewController.swift in Sources */,
 				E28234CF1F895AB600518894 /* cellRecentlyTableViewCell.swift in Sources */,
+				E2E15EBD1FE3889C00FDE70D /* loginController.swift in Sources */,
 				E2106BFD1F84EF4C000F79D3 /* ModelController.swift in Sources */,
 				E20935821F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld in Sources */,
 				E20CA0671F8B69220031B1DE /* SearchListViewController.swift in Sources */,
@@ -447,6 +461,7 @@
 				E2E1CDE51F934B39004CBC1A /* provinceNameViewController.swift in Sources */,
 				E20CA0711F8B74440031B1DE /* CategoryTableViewCell.swift in Sources */,
 				E2DD9A181FE2CDCC005AF87B /* MyApp.swift in Sources */,
+				E2E15EBF1FE3987300FDE70D /* profileController.swift in Sources */,
 				E20EED5D1F8A1EFC00F1602E /* SearchHistories.swift in Sources */,
 				E250B9451FDE3ADD005458C6 /* UserDetailViewController.swift in Sources */,
 				E209355C1F8E304A007E387A /* newCollectionViewCell.swift in Sources */,
@@ -457,6 +472,7 @@
 				E2106C0D1F84F2DF000F79D3 /* LoginViewController.swift in Sources */,
 				E20CA0691F8B6A760031B1DE /* SearchListTableViewCell.swift in Sources */,
 				E208B3BC1F8A691D00F79403 /* CartViewController.swift in Sources */,
+				E2DD9A1E1FE2EC07005AF87B /* NewLoginViewController.swift in Sources */,
 				E29BC7031F927D7800930334 /* sellerProductViewController.swift in Sources */,
 				E2106BF71F84EF4C000F79D3 /* AppDelegate.swift in Sources */,
 				E2106C0F1F850A09000F79D3 /* HomeViewController.swift in Sources */,
