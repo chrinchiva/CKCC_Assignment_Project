@@ -15,5 +15,9 @@ class MyApp{
         var username:String!
         var email:String!
         var userID:String!
+        var password: String!
+        var imageCount:Int!
+        var phone:String!
+    
     //var profileImage:URL!
 }
