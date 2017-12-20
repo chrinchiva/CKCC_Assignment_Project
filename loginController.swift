@@ -29,11 +29,18 @@ class loginController: UIViewController {
         loginUsernameField.isHidden = true
         loginPhoneNumberField.isHidden = true
         checkIfuserisLoggedIn()
+        
+        
     }
     // when register or login
-    @IBAction func onClickRegisterButton(_ sender: UIButton) {handleLoginRegister()}
+    @IBAction func onClickRegisterButton(_ sender: UIButton) {
+        alertRememberPasswordRequest(title: "Information", message: "log in now")
+        
+        
+    }
     // when segment control selected
     func handleLoginRegister(){
+        
         if segmentLoginControl.selectedSegmentIndex == 0
         {
             handleLogin()
@@ -134,6 +141,20 @@ class loginController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         popupDialog.addAction(okAction)
         self.present(popupDialog, animated: true, completion: nil)
+    }
+    func alertRememberPasswordRequest(title:String, message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            print("I have save the remember request")
+            self.handleLoginRegister()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            print("i dismiss the remember request")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

@@ -1260,6 +1260,7 @@
                         <segue destination="Hnz-P9-2Lw" kind="relationship" relationship="viewControllers" id="aqQ-N4-Vve"/>
                         <segue destination="4a7-T3-hgY" kind="relationship" relationship="viewControllers" id="drd-Lx-aMB"/>
                         <segue destination="BRd-SO-cxq" kind="relationship" relationship="viewControllers" id="jKS-FW-Ys3"/>
+                        <segue destination="v0h-YM-e8z" kind="relationship" relationship="viewControllers" id="7UF-5W-XGN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkW-a9-UWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2078,14 +2079,15 @@
                         <outlet property="loginUIView" destination="edI-Kj-odA" id="TQu-Ur-TrZ"/>
                         <outlet property="loginUsernameField" destination="I1E-Nv-8ym" id="gv1-PR-NxI"/>
                         <outlet property="segmentLoginControl" destination="IHw-pz-zlF" id="Eml-7q-9Cn"/>
-                        <segue destination="v0h-YM-e8z" kind="show" identifier="segue_profile" id="f6n-4J-DOp"/>
+                        <segue destination="v0h-YM-e8z" kind="show" identifier="segue_profile1" id="f6n-4J-DOp"/>
+                        <segue destination="vwk-c3-TEv" kind="show" identifier="segue_profile" id="SQS-4K-wAF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhr-2t-Ee3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2917" y="-603"/>
         </scene>
-        <!--Profile Controller-->
+        <!--profile-->
         <scene sceneID="oZn-vd-rDm">
             <objects>
                 <viewController id="v0h-YM-e8z" customClass="profileController" customModule="OnlineShoppingProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -2094,7 +2096,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JjU-M9-N8K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fDu-fY-PGS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zA9-8m-Tzg">
@@ -2118,10 +2120,10 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-U9-Dip">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sK7-oI-I1a">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGu-Gc-3lo">
                                                 <rect key="frame" x="20" y="20" width="200" height="40"/>
@@ -2174,7 +2176,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skt-St-pnZ">
-                                        <rect key="frame" x="159" y="321" width="96" height="30"/>
+                                        <rect key="frame" x="159" y="297" width="96" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="W5s-Ut-twx"/>
                                             <constraint firstAttribute="width" constant="96" id="XkM-7k-5Nj"/>
@@ -2185,7 +2187,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ya-wb-mH7">
-                                        <rect key="frame" x="147" y="359" width="120" height="30"/>
+                                        <rect key="frame" x="147" y="335" width="120" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="DDV-w1-Zya"/>
                                             <constraint firstAttribute="height" constant="30" id="HKL-uw-H6S"/>
@@ -2221,6 +2223,9 @@
                             <constraint firstItem="fLV-U9-Dip" firstAttribute="top" secondItem="zA9-8m-Tzg" secondAttribute="bottom" id="yzP-2d-Gn5"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="profile" image="10.jpg" selectedImage="11.jpg" springLoaded="YES" id="lmu-kK-RlP">
+                        <color key="badgeColor" red="0.14561259746551514" green="0.65955960750579834" blue="0.75961804389953613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="backgroundUIView" destination="sK7-oI-I1a" id="5Nw-Nb-TRP"/>
                         <outlet property="profileEmail" destination="CO1-Ka-4Th" id="Q3R-QX-DK3"/>
@@ -2232,7 +2237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9G-ri-8am" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1926" y="-603"/>
+            <point key="canvasLocation" x="-1671" y="-458"/>
         </scene>
         <!--Province Name View Controller-->
         <scene sceneID="vC0-Kg-M6f">
@@ -2366,6 +2371,8 @@
     </scenes>
     <resources>
         <image name="1.jpg" width="375" height="130"/>
+        <image name="10.jpg" width="622" height="350"/>
+        <image name="11.jpg" width="800" height="533"/>
         <image name="Mr.CHIVA" width="960" height="960"/>
         <image name="Nokia.jpg" width="1000" height="1000"/>
         <image name="background2" width="640" height="1136"/>
@@ -2386,6 +2393,7 @@
         <image name="submitbutton" width="401" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7UF-5W-XGN"/>
         <segue reference="GaZ-Wp-UZH"/>
         <segue reference="mED-GC-qYG"/>
         <segue reference="FwA-Wa-azT"/>
