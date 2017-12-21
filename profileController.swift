@@ -40,22 +40,35 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
             //print("******************* start profile image *******************************")
            
             //loadDataFromFirebaseDB()
+            loadSingleFile()
             
             
             
-//            let userID = Auth.auth().currentUser?.uid
-//            ref.child("userprofiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-//                // Get user value
-//                let value = snapshot.value as? NSDictionary
-//                let username = value?["username"] as? String ?? ""
-//                let user = username
-//                print(user)
-//                // ...
-//            }) { (error) in
-//                print(error.localizedDescription)
-//            }
             
 
+        }
+    }
+    func loadSingleFile(){
+        let userID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference()
+        ref.child("userprofiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            let useremail  = value?["email"] as? String ?? ""
+            let userphone = value?["phone"] as? String ?? ""
+            let iemail = useremail
+            let iphone = userphone
+            let iuser = username
+            
+            //print("my user name is **********************")
+            //print(user)
+            self.profileUsername.text = iuser
+            self.profileEmail.text = iemail
+            self.profilePhoneView.text = iphone
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     func loadDataFromFirebaseDB(){
@@ -103,9 +116,10 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        loadDataFromFirebaseDB()
-        self.profileUsername.text = MyApp.shared.username
-        self.profileEmail.text = MyApp.shared.email
+        loadSingleFile()
+        //loadDataFromFirebaseDB()
+        //self.profileUsername.text = MyApp.shared.username
+        //self.profileEmail.text = MyApp.shared.email
     }
     @IBAction func onClickLogoutButton(_ sender: UIBarButtonItem) {
         handleLogout()
