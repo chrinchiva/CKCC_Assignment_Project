@@ -36,7 +36,6 @@ class loginController: UIViewController {
     @IBAction func onClickRegisterButton(_ sender: UIButton) {
         alertRememberPasswordRequest(title: "Information", message: "log in now")
         
-        
     }
     // when segment control selected
     func handleLoginRegister(){

@@ -1968,7 +1968,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edI-Kj-odA">
                                 <rect key="frame" x="10" y="243" width="394" height="250"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R3Q-88-rbk">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pp@gmail.com" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R3Q-88-rbk">
                                         <rect key="frame" x="20" y="105" width="354" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4ND-Wf-eBO"/>
@@ -1977,7 +1977,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-c6-XyO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456789" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAP-c6-XyO">
                                         <rect key="frame" x="20" y="153" width="354" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vjs-RL-Ynl"/>
@@ -2339,39 +2339,53 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sf-o0-Fbh">
-                                                <rect key="frame" x="20" y="380" width="374" height="4"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1D-19-n8w">
+                                                <rect key="frame" x="20" y="360" width="374" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="4" id="568-LA-9Bh"/>
+                                                    <constraint firstAttribute="height" constant="40" id="f1D-zF-XH5"/>
                                                 </constraints>
-                                                <state key="normal" title="Choose category"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agC-37-UBb">
+                                                <rect key="frame" x="107" y="592" width="200" height="50"/>
+                                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ON4-w4-Pcu"/>
+                                                    <constraint firstAttribute="width" constant="200" id="WAr-YM-sw4"/>
+                                                </constraints>
+                                                <state key="normal" title="SELL NOW" image="sell-now-button">
+                                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
-                                                    <action selector="onClickButtonChooseCategory:" destination="hPC-j5-3c8" eventType="touchUpInside" id="pr8-dR-9XZ"/>
+                                                    <action selector="onClickSelNowButton:" destination="hPC-j5-3c8" eventType="touchUpInside" id="Cpd-jd-hRC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="b1D-19-n8w" firstAttribute="top" secondItem="2fx-UV-sUj" secondAttribute="bottom" constant="20" id="0vz-mt-S9c"/>
                                             <constraint firstItem="0U5-Qc-egd" firstAttribute="top" secondItem="ygi-hf-V1K" secondAttribute="top" id="2UA-7w-3PL"/>
-                                            <constraint firstItem="5sf-o0-Fbh" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="3VQ-I2-QR5"/>
-                                            <constraint firstItem="5sf-o0-Fbh" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" constant="20" id="5Hz-48-ytr"/>
                                             <constraint firstItem="8cB-vz-sXG" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" constant="20" id="6qH-TP-UXN"/>
                                             <constraint firstItem="8cB-vz-sXG" firstAttribute="top" secondItem="7ll-jx-9b3" secondAttribute="bottom" constant="20" id="7aD-Af-OyS"/>
                                             <constraint firstAttribute="trailing" secondItem="8cB-vz-sXG" secondAttribute="trailing" constant="20" id="AHD-0z-Ls3"/>
                                             <constraint firstAttribute="trailing" secondItem="0U5-Qc-egd" secondAttribute="trailing" id="Hpk-7o-sfT"/>
                                             <constraint firstItem="GY7-M6-EOQ" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" constant="20" id="Ivt-j8-YWN"/>
-                                            <constraint firstItem="5sf-o0-Fbh" firstAttribute="top" secondItem="2fx-UV-sUj" secondAttribute="bottom" constant="40" id="K2v-fw-1PN"/>
+                                            <constraint firstItem="b1D-19-n8w" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" constant="20" id="Ouo-he-jKH"/>
                                             <constraint firstItem="2fx-UV-sUj" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="W9a-JK-J4P"/>
-                                            <constraint firstAttribute="trailing" secondItem="5sf-o0-Fbh" secondAttribute="trailing" constant="20" id="Wbp-Al-E9F"/>
                                             <constraint firstItem="GY7-M6-EOQ" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="WvI-Fv-1GT"/>
                                             <constraint firstItem="2fx-UV-sUj" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" constant="20" id="Xeh-hY-qgt"/>
+                                            <constraint firstItem="agC-37-UBb" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="Ydk-0t-hUC"/>
+                                            <constraint firstAttribute="trailing" secondItem="b1D-19-n8w" secondAttribute="trailing" constant="20" id="bet-nj-rMI"/>
                                             <constraint firstAttribute="trailing" secondItem="2fx-UV-sUj" secondAttribute="trailing" constant="20" id="czC-mJ-6NU"/>
-                                            <constraint firstItem="5sf-o0-Fbh" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="gWT-sD-fQl"/>
                                             <constraint firstItem="GY7-M6-EOQ" firstAttribute="top" secondItem="8cB-vz-sXG" secondAttribute="bottom" constant="20" id="lku-Gu-due"/>
                                             <constraint firstItem="7ll-jx-9b3" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="pl5-LH-C8t"/>
                                             <constraint firstItem="2fx-UV-sUj" firstAttribute="top" secondItem="GY7-M6-EOQ" secondAttribute="bottom" constant="20" id="q23-dm-XU3"/>
                                             <constraint firstItem="8cB-vz-sXG" firstAttribute="centerX" secondItem="ygi-hf-V1K" secondAttribute="centerX" id="t7u-lI-dbD"/>
                                             <constraint firstAttribute="trailing" secondItem="GY7-M6-EOQ" secondAttribute="trailing" constant="20" id="tTG-yM-c56"/>
+                                            <constraint firstAttribute="bottom" secondItem="agC-37-UBb" secondAttribute="bottom" constant="30" id="vdb-fJ-apq"/>
                                             <constraint firstItem="7ll-jx-9b3" firstAttribute="top" secondItem="0U5-Qc-egd" secondAttribute="bottom" constant="10" id="wOR-wm-VW4"/>
                                             <constraint firstItem="0U5-Qc-egd" firstAttribute="leading" secondItem="ygi-hf-V1K" secondAttribute="leading" id="weJ-n8-WHD"/>
                                         </constraints>
@@ -2400,6 +2414,7 @@
                         <outlet property="image2View" destination="tx7-Mb-ATW" id="TAW-yQ-cNN"/>
                         <outlet property="image3View" destination="Pqe-To-INl" id="THE-q6-MAi"/>
                         <outlet property="priceOfProductTextField" destination="2fx-UV-sUj" id="k23-JD-psP"/>
+                        <outlet property="productCategoryTextField" destination="b1D-19-n8w" id="7Fl-oQ-VPQ"/>
                         <outlet property="productTitleTextField" destination="8cB-vz-sXG" id="kp0-eS-Siu"/>
                         <outlet property="sellerPhoneNumberTextField" destination="GY7-M6-EOQ" id="jlT-Ll-M9c"/>
                     </connections>
@@ -2580,6 +2595,7 @@
         <image name="ic_settings_applications" width="24" height="24"/>
         <image name="ic_shopping_cart" width="24" height="24"/>
         <image name="online logo" width="2000" height="2000"/>
+        <image name="sell-now-button" width="465" height="112"/>
         <image name="submitbutton" width="401" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>

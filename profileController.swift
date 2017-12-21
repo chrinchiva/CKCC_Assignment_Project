@@ -41,11 +41,6 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
            
             //loadDataFromFirebaseDB()
             loadSingleFile()
-            
-            
-            
-            
-
         }
     }
     func loadSingleFile(){
@@ -66,6 +61,12 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
             self.profileUsername.text = iuser
             self.profileEmail.text = iemail
             self.profilePhoneView.text = iphone
+            // save data off line
+            let myApp = MyApp.shared
+                myApp.email = iemail
+                myApp.username = iuser
+                myApp.phone = iphone
+            
             // ...
         }) { (error) in
             print(error.localizedDescription)
