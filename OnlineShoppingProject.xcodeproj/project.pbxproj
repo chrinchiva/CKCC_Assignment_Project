@@ -52,6 +52,7 @@
 		E250B9451FDE3ADD005458C6 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250B9441FDE3ADD005458C6 /* UserDetailViewController.swift */; };
 		E255647D1FD8072400B2765D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2F2618F1FB9C36B00EFFE32 /* GoogleService-Info.plist */; };
 		E255647F1FD80AE400B2765D /* LoginFirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255647E1FD80AE400B2765D /* LoginFirebaseViewController.swift */; };
+		E25EB0731FEC0BA200470289 /* SellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25EB0721FEC0BA200470289 /* SellController.swift */; };
 		E27FAB881FA0BA2400D226DB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FAB871FA0BA2400D226DB /* Article.swift */; };
 		E27FAB8A1FA0BB6900D226DB /* DecodableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FAB891FA0BB6900D226DB /* DecodableViewController.swift */; };
 		E28234C51F894FBB00518894 /* Iphone5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28234C21F894FBB00518894 /* Iphone5.jpg */; };
@@ -120,6 +121,7 @@
 		E2106C101F850D8B000F79D3 /* CourseCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E250B9441FDE3ADD005458C6 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		E255647E1FD80AE400B2765D /* LoginFirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseViewController.swift; sourceTree = "<group>"; };
+		E25EB0721FEC0BA200470289 /* SellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellController.swift; sourceTree = "<group>"; };
 		E27FAB871FA0BA2400D226DB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		E27FAB891FA0BB6900D226DB /* DecodableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableViewController.swift; sourceTree = "<group>"; };
 		E28234C21F894FBB00518894 /* Iphone5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Iphone5.jpg; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				E2DD9A1F1FE2F014005AF87B /* LogInViewController.swift */,
 				E2E15EBC1FE3889C00FDE70D /* loginController.swift */,
 				E2E15EBE1FE3987300FDE70D /* profileController.swift */,
+				E25EB0721FEC0BA200470289 /* SellController.swift */,
 			);
 			name = Online;
 			path = ..;
@@ -471,6 +474,7 @@
 				E2106BFB1F84EF4C000F79D3 /* DataViewController.swift in Sources */,
 				E2106C0D1F84F2DF000F79D3 /* LoginViewController.swift in Sources */,
 				E20CA0691F8B6A760031B1DE /* SearchListTableViewCell.swift in Sources */,
+				E25EB0731FEC0BA200470289 /* SellController.swift in Sources */,
 				E208B3BC1F8A691D00F79403 /* CartViewController.swift in Sources */,
 				E2DD9A1E1FE2EC07005AF87B /* NewLoginViewController.swift in Sources */,
 				E29BC7031F927D7800930334 /* sellerProductViewController.swift in Sources */,

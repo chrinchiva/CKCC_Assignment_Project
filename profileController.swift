@@ -219,4 +219,9 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
         }
         
     }
+    
+    @IBAction func onClickSellMyProductButton(_ sender: UIButton) {
+    
+    }
+    
 }
