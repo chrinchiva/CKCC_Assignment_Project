@@ -18,6 +18,7 @@ class MyApp{
         var password: String!
         var imageCount:Int!
         var phone:String!
+    var testingImage:String!
     
     //var profileImage:URL!
 }

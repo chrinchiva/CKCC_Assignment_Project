@@ -39,6 +39,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var bannerPageController: UIPageControl!
     var timer: Timer!
     var updateCounter: Int!
+    // firebase variable
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,19 +62,81 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
 
     // collection data view of new product 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image1.count
+        //return image1.count
+        //return users.count
+        return 100
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as! newProductCollectionViewCell
         //cell.newProductImageView.image = UIImage(named: image1[indexPath.row] + ".jpg")
-        cell.newProductImageView.image = UIImage(named: image1[indexPath.row] + ".jpg")
-        let viewCost = cost[indexPath.row]
-      cell.newProductlabelView.text = "US $\(viewCost)"
+        //let viewCost = cost[indexPath.row]
+        //cell.newProductlabelView.text = "US $\(viewCost)"
+        
+        cell.newProductImageView.image = UIImage(named: "default_image_select")
+        
+        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+        let profileRef = Storage.storage().reference(withPath: "productImages/\(indexPath.row+1)\(profileImageFileName)")
+        profileRef.getData(maxSize: 102240000) { (imageData, error) in
+            if error == nil {
+                print("Load profile from firebase success",imageData)
+                
+                let image = UIImage(data: imageData!)
+                DispatchQueue.main.async {
+                    cell.newProductImageView.image = image
+//                    if a == 0{
+//                        //self.image1View.image = image
+//                    }
+//                    if a == 1 {
+//                        //self.image2View.image = image
+//                    }
+//                    if a == 2 {
+//                        //self.image3View.image = image
+//                    }
+                    
+                }
+            }
+            else {
+                print("Load profile from Firebase fail:", error?.localizedDescription)
+            }
+        }
+//        if let profileImageurl = user.profileImageUrl{
+//
+//        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         homeIndex = indexPath.row
         performSegue(withIdentifier: "segue_homedetail", sender: self)
     }
+    func downloadImage(){
+        for a in 0...2 {
+            let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+            let profileRef = Storage.storage().reference(withPath: "productImages/\(a+1)\(profileImageFileName)")
+            profileRef.getData(maxSize: 102240000) { (imageData, error) in
+                if error == nil {
+                    print("Load profile from firebase success",imageData)
+                    
+                    let image = UIImage(data: imageData!)
+                    DispatchQueue.main.async {
+                        if a == 0{
+                            //self.image1View.image = image
+                        }
+                        if a == 1 {
+                            //self.image2View.image = image
+                        }
+                        if a == 2 {
+                            //self.image3View.image = image
+                        }
+                        
+                    }
+                }
+                else {
+                    print("Load profile from Firebase fail:", error?.localizedDescription)
+                }
+            }
+        }
+    }
+    
     
 }
