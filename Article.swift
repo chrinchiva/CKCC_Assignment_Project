@@ -20,7 +20,7 @@ struct Article:Decodable {
         case id = "_id"
         case title = "_title"
         case content = "_content"
-        case imageUrl = "_imageUrl"
+        case imageUrl = "image"
         case date = "_date"
         case author = "_author"
         case viewCount = "_viewCount"

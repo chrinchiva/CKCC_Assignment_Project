@@ -25,22 +25,47 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
     var handleEmail: DatabaseHandle?
     var currentData = [String]()
     var databaseHandle : DatabaseHandle?
-    
+    var articles = [Article]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // store current user to name display label
-        
-      
-        
         if Auth.auth().currentUser?.uid == nil
         {
             handleLogout()
             
         }else {
             //print("******************* start profile image *******************************")
-           
             //loadDataFromFirebaseDB()
+            let uID = Auth.auth().currentUser?.uid
             loadSingleFile()
+        }
+    }
+    
+    // strill testing progress
+    func uploadProfileImage(selectedImageProfile: UIImage, userid:String){
+        // upload image to firebase
+        let myImageData = UIImageJPEGRepresentation(selectedImageProfile, 0.75)
+        let imageName = NSUUID.init(uuidString: userid)
+        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+        
+        let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(imageName)")
+        profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
+            if error == nil {
+                print("Upload profile", metaData)
+                //// put image link to dabase
+                if let profileUrl = metaData?.downloadURL(){
+                    let userProfileRef = Database.database().reference(withPath: "userprofiles/\(imageName)/image")
+                    DispatchQueue.main.async {
+                        userProfileRef.setValue(profileUrl.absoluteString)
+                    }
+                    
+                }
+                //
+            }
+            else {
+                print("Up load to firebase Storage fail:\(error?.localizedDescription)")
+            }
         }
     }
     func loadSingleFile(){
@@ -52,70 +77,91 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
             let username = value?["username"] as? String ?? ""
             let useremail  = value?["email"] as? String ?? ""
             let userphone = value?["phone"] as? String ?? ""
+            let userImage = value?["image"] as? String ?? "default_image_select"
             let iemail = useremail
             let iphone = userphone
             let iuser = username
+            let iimage = userImage
             
             //print("my user name is **********************")
             //print(user)
             self.profileUsername.text = iuser
             self.profileEmail.text = iemail
             self.profilePhoneView.text = iphone
+            print("My profile image is : ***********:")
+            print(iimage)
             // save data off line
             let myApp = MyApp.shared
                 myApp.email = iemail
                 myApp.username = iuser
                 myApp.phone = iphone
+                myApp.testingImage = iimage
+                //articles
+           // self.loadImagefromFirebaseDB(imageUrl: MyApp.shared.testingImage)
+            self.loadImagefromFirebaseDB(imageUrl: iimage)
             
             // ...
         }) { (error) in
             print(error.localizedDescription)
         }
-    }
-    func loadDataFromFirebaseDB(){
-        if Auth.auth().currentUser != nil {
-            //let userID = Auth.auth().currentUser?.uid
-            let userEmail = Auth.auth().currentUser?.email
-            let courseRef = Database.database().reference(withPath: "userprofiles")
-            courseRef.observe(.value, with: { (snapshot) in
-                for courseSnapshot in snapshot.children.allObjects as! [DataSnapshot]{
-                
-                    let course = courseSnapshot.value as! [String:Any]
-                    let myName = course["username"] as? String ?? ""
-                    let myPassword = course["password"] as? String ?? ""
-                    let myEmail  = course["email"] as? String ?? ""
-                    let myPhone = course["phone"] as? String ?? ""
-                    //print("username:\(name)")
-                    //print("password:\(myPassword)")
-                    //print("email:\(myEmail)")
-                    print(course)
-                    if myEmail == userEmail {
-                        let myApp = MyApp.shared
-                        DispatchQueue.main.async {
-                            myApp.email = myEmail
-                            myApp.username = myName
-                            myApp.password = myPassword
-                            myApp.phone = myPhone
-                            print("The current sign in is ")
-                            print(MyApp.shared.username)
-                            print(MyApp.shared.email)
-                            print(MyApp.shared.password)
-                            self.profileUsername.text = myName
-                            self.profileEmail.text = myEmail
-                            self.profilePhoneView.text = myPhone
-                        }
-                    }else{
-                        
-                    }
-                    
-                }
-            })
-        } else {
-            print("No user sign in...")
+        // load number of image posted by users
+        ref.child("numberOfAllImage").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! String? ?? "0"
+            let result = Decimal(string: value)
+            print("Image number image is here:")
+            print(value)
+            var i = result!
+            print(i)
+
+        }){(error) in
+            print(error.localizedDescription)
         }
+        // load number of product number
         
-        
+        if Auth.auth().currentUser != nil {
+            let uid  = Auth.auth().currentUser?.uid
+            //"userprofiles/\(userid)/product/product1/image\(imageOrder)"
+            ref.child("userprofiles").child(userID!).child("numberOfproduct").observeSingleEvent(of: .value, with: { (snapshot) in
+                print(snapshot)
+                let value = snapshot.value as! Int? ?? 0
+                //let result = Decimal(string: value)
+                let myApp = MyApp.shared
+                myApp.TotalProductNumber = value
+                
+                print("Image productnumber is here:", MyApp.shared.TotalProductNumber)
+               
+                
+                
+            }){(error) in
+                print(error.localizedDescription)
+            }
+
+        }else{
+            
+        }
     }
+    func loadImagefromFirebaseDB(imageUrl: String){
+        let imageUrl = URL(string: imageUrl)!
+        let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+            if let data = data {
+                print("the respone data is")
+                print(data)
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    if image != nil {
+                        print("return true ")
+                        self.profileImageView.image = image
+                    } else {
+                        print("return default ")
+                        self.profileImageView.image = #imageLiteral(resourceName: "default_image_select")
+                    }
+                }
+            }
+        }
+        task.resume()
+
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         loadSingleFile()
         //loadDataFromFirebaseDB()

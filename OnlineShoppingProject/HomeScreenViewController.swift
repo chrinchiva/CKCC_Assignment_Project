@@ -83,25 +83,14 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 let image = UIImage(data: imageData!)
                 DispatchQueue.main.async {
                     cell.newProductImageView.image = image
-//                    if a == 0{
-//                        //self.image1View.image = image
-//                    }
-//                    if a == 1 {
-//                        //self.image2View.image = image
-//                    }
-//                    if a == 2 {
-//                        //self.image3View.image = image
-//                    }
-                    
+
                 }
             }
             else {
                 print("Load profile from Firebase fail:", error?.localizedDescription)
             }
         }
-//        if let profileImageurl = user.profileImageUrl{
-//
-//        }
+
         
         return cell
     }

@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-class loginController: UIViewController {
+    var selectedImage : UIImage!
+class loginController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet var backgroundUIView: UIView!
     @IBOutlet weak var loginUIView: UIView!
@@ -20,6 +21,7 @@ class loginController: UIViewController {
     @IBOutlet weak var loginPasswordField: UITextField!
     @IBOutlet weak var loginPhoneNumberField: UITextField!
     @IBOutlet weak var loginImageView: UIImageView!
+
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
@@ -28,7 +30,9 @@ class loginController: UIViewController {
         loginUIView.backgroundColor = UIColor(r: 0, g: 151, b: 155)
         loginUsernameField.isHidden = true
         loginPhoneNumberField.isHidden = true
+        loginImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageProfile)))
         checkIfuserisLoggedIn()
+        loginImageView.isUserInteractionEnabled = true
         
         
     }
@@ -44,6 +48,7 @@ class loginController: UIViewController {
         {
             handleLogin()
         }else{
+            loginImageView.isUserInteractionEnabled = true
             handleSignUp()
         }
     }
@@ -63,6 +68,12 @@ class loginController: UIViewController {
             self.performSegue(withIdentifier: "segue_profile", sender: nil)
             }
         }
+        // set number of image
+        if Auth.auth().currentUser != nil {
+            self.ref.child("numberOfAllImage").setValue("1")
+        } else {
+            
+        }
     }
     // user signup action
     func handleSignUp(){
@@ -77,6 +88,19 @@ class loginController: UIViewController {
                 self.showMessage(title: "Information", Message: (error?.localizedDescription)!)
                 return
             }
+
+            // sign in befor setting image and other information
+            Auth.auth().signIn(withEmail: uemail , password: upassword) { (user, error) in
+                if error != nil {
+                    self.showMessage(title: "Information", Message: (error?.localizedDescription)!)
+                    return
+                }else {
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "segue_profile", sender: nil)
+                }
+            }
+            // end signed in
+            
             
             self.settingUserprofile(username: self.loginUsernameField.text!, email: self.loginEmailField.text!, pass: self.loginPasswordField.text!, phone: self.loginPhoneNumberField.text!)
             
@@ -92,6 +116,48 @@ class loginController: UIViewController {
         }
     }
     
+    func handleSelectImageProfile(){
+        print("Image is selected")
+        startSelectImage()
+    }
+    func startSelectImage(){
+        print("Start choose image")
+        let imagePickerVc = UIImagePickerController()
+        imagePickerVc.sourceType = .photoLibrary
+        imagePickerVc.delegate = self
+        imagePickerVc.allowsEditing = true
+        present(imagePickerVc, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        print("The image selcted is:")
+        print(selectedImage)
+        loginImageView.image = selectedImage
+    }
+    func uploadProfileImage(selectedImageProfile: UIImage, userid:String){
+        // upload image to firebase
+        
+        let myImageData = UIImageJPEGRepresentation(selectedImageProfile, 0.75)
+        let imageName = NSUUID.init(uuidString: userid)
+        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+        
+        //let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(imageName)")
+        print("My ID is:",userid)
+        let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(userid)")
+        profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
+            if error == nil {
+                print("Upload profile", metaData)
+                if let profileUrl = metaData?.downloadURL(){
+                    let userProfileRef = Database.database().reference(withPath: "userprofiles/\(userid)/image")
+                    userProfileRef.setValue(profileUrl.absoluteString)
+                }
+            }
+            else {
+                print("Up load to firebase Storage fail:\(error?.localizedDescription)")
+            }
+        }
+    }
     @IBAction func onClickSegmentChanged(_ sender: UISegmentedControl) {
         if segmentLoginControl.selectedSegmentIndex == 0{
             loginUsernameField.isHidden = true
@@ -113,6 +179,9 @@ class loginController: UIViewController {
             self.ref.child("userprofiles").child(uID!).child("email").setValue(email)
             self.ref.child("userprofiles").child(uID!).child("password").setValue(pass)
             self.ref.child("userprofiles").child(uID!).child("phone").setValue(phone)
+            self.ref.child("userprofiles").child(uID!).child("numberOfproduct").setValue(0)
+            
+            self.uploadProfileImage(selectedImageProfile: selectedImage, userid: uID!)
         } else {
             
         }

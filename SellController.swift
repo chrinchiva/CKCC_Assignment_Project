@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+
 class SellController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var image1View: UIImageView!
@@ -18,10 +20,17 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var priceOfProductTextField: UITextField!
     var imageOrder = 0
     var selectedImage:[UIImage]!
+    //var imageProduct : [UIImage]!
+    var imageProduct1 : UIImage!
+    var imageProduct2 : UIImage!
+    var imageProduct3 : UIImage!
+    
+    
     
     @IBOutlet weak var productCategoryTextField: UITextField!
     var product_categolary = ["Book","Phone","Computer","Shirt","Book","Phone","Computer","Shirt","Book","Phone","Computer","Other"]
     let picker = UIPickerView()
+    var ref : DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +38,12 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dataSource = self
         picker.backgroundColor = UIColor.white
         picker.alpha = 0.5
+        imageProduct1 = UIImage(named: "default_image_select")
+        imageProduct2 = UIImage(named: "default_image_select")
+        imageProduct3 = UIImage(named: "default_image_select")
+        image1View.image = imageProduct1
+        image2View.image = imageProduct2
+        image3View.image = imageProduct3
         
         productCategoryTextField.inputView = picker
         sellerPhoneNumberTextField.text = MyApp.shared.phone
@@ -50,7 +65,7 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     let image = UIImage(data: imageData!)
                     DispatchQueue.main.async {
                         if a == 0{
-                        //self.image1View.image = image
+                        self.image1View.image = image
                         }
                         if a == 1 {
                             self.image2View.image = image
@@ -66,10 +81,6 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
             }
         }
-        
-        // *******************************************************
-        //loadDataFromFirebaseDB()
-        
 
     }// end on view
     
@@ -92,22 +103,11 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             print(myimage)
                             self.loadAndDisplayArticleImage(stringurl: myApp.testingImage)
                         }
-
-                    
                 }
             })
         } else {
             print("No user sign in...")
         }
-        //
-//        let userID = Auth.auth().currentUser?.uid
-//        ref = Database.database().reference()
-//        ref.child("userprofiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-//            // Get user value
-//            let value = snapshot.value as? NSDictionary
-//            let username = value?["username"] as? String ?? ""
-        //
-        
     }
     
     func loadAndDisplayArticleImage(stringurl: String){
@@ -149,56 +149,19 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         switch imageOrder {
             case 1:
             image1View.image = selectedImage1
+            imageProduct1 = selectedImage1
             case 2:
             image2View.image = selectedImage1
+            imageProduct2 = selectedImage1
             case 3:
             image3View.image = selectedImage1
+            imageProduct3 = selectedImage1
         default: break
             // do nothing
         }
-        // upload image to firebase
-        let myImageData = UIImageJPEGRepresentation(selectedImage1, 0.75)
-        let userID = Auth.auth().currentUser?.uid
-        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
 
-        let profileRef = Storage.storage().reference(withPath: "productImages/\(imageOrder)\(profileImageFileName)")
-        profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
-            if error == nil {
-                print("Upload profile", metaData)
-                
-                //////
-                let uID = Auth.auth().currentUser?.uid
-                //self.ref.child("userprofiles/\(String(describing: uID))/username").setValue(username)
-                //self.ref.child("userprofiles/\(String(describing: uID))/email").setValue(email)
-                //self.ref.child("userprofiles/\(String(describing: uID))/password").setValue(pass)
-//                self.ref.child("userprofiles").child(uID!).child("username").setValue(username)
-//                self.ref.child("userprofiles").child(uID!).child("email").setValue(email)
-//                self.ref.child("userprofiles").child(uID!).child("password").setValue(pass)
-//                self.ref.child("userprofiles").child(uID!).child("phone").setValue(phone)
-                
-                ////
-                if let profileUrl = metaData?.downloadURL(){
-                    let userProfileRef = Database.database().reference(withPath: "userprofiles/userimage/image")
-                    userProfileRef.setValue(profileUrl.absoluteString)
-                    
-                }
-            }
-            else {
-                print("Up load to firebase Storage fail:\(error?.localizedDescription)")
-            }
-        }
     }
-//    private func registerUserIntoDatabaseWithID(uid: String, values: [String : AnyObject]){
-//        let ref = Database.database().reference(fromURL: "https://firebasestorage.googleapis.com/v0/b/onlineshoppingproject-a377a.appspot.com/")
-//        let userReference = ref.child("Users").child(uid)
-//        userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-//            if err != nil {
-//                print(err)
-//                return
-//            }
-//            self.dismiss(animated: true, completion: nil)
-//        })
-//    }
+
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -215,33 +178,7 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         productCategoryTextField.text = product_categolary[row]
         self.view.endEditing(false)
     }
-    
-    
-    // choose image for sell view product
-//    @IBAction func onClickBrowsePhotos(_ sender: UIButton) {
-//        let alert = UIAlertController(title: "Select image", message: "Which image order?", preferredStyle: UIAlertControllerStyle.alert)
-//
-//        alert.addAction(UIAlertAction(title: "Set image1", style: UIAlertActionStyle.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//            print("select image 1")
-//            self.imageOrder = 1
-//            self.startSelectImage()
-//        }))
-//        alert.addAction(UIAlertAction(title: "Set image2", style: UIAlertActionStyle.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//            print("select image 2")
-//            self.imageOrder = 2
-//            self.startSelectImage()
-//        }))
-//        alert.addAction(UIAlertAction(title: "Set image3", style: UIAlertActionStyle.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//            print("select image 3")
-//            self.imageOrder = 3
-//            self.startSelectImage()
-//        }))
-//
-//        self.present(alert, animated: true, completion: nil)
-//    }
+
     func startSelectImage(){
         print("Start choose image")
         let imagePickerVc = UIImagePickerController()
@@ -258,13 +195,62 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let myCategory = productCategoryTextField.text
         // checking blank requirement for field user input
         
-        if myTitle == "" || myPhone == "" || myPrice == "" || myCategory == ""{
-            self.showMessage(title: "Missing requiment", Message: "You cannot leave blank for any field!!")
+        if Auth.auth().currentUser != nil {
+            let uID = Auth.auth().currentUser?.uid
+            uploadProfileImage(selectedImageProfile: imageProduct1, userid: uID!, imageOrder: 1)
+            uploadProfileImage(selectedImageProfile: imageProduct2, userid: uID!, imageOrder: 2)
+            uploadProfileImage(selectedImageProfile: imageProduct3, userid: uID!, imageOrder: 3)
+//            if Auth.auth().currentUser != nil {
+//                let uID = Auth.auth().currentUser?.uid
+//                let id = NSUUID.init(uuidString: uID!)
+//                let proNum = MyApp.shared.TotalProductNumber + 1
+//                ref = Database.database().reference()
+//                self.ref.child("userprofiles/myProduct/\(String(describing: id))/numberOfproduct").setValue(proNum)
+//
+//            }
+        } else {
+            
         }
-        else{
-             print("product was sold!!")
-        }
+        
+//        if myTitle == "" || myPhone == "" || myPrice == "" || myCategory == ""{
+//            self.showMessage(title: "Missing requiment", Message: "You cannot leave blank for any field!!")
+//        }
+//        else{
+//             print("product was sold!!")
+//        }
        
+        
+    }
+    func uploadProfileImage(selectedImageProfile: UIImage, userid:String, imageOrder:Int){
+        // upload image to firebase
+        
+        let myImageData = UIImageJPEGRepresentation(selectedImageProfile, 0.75)
+        let imageName = NSUUID.init(uuidString: userid)
+        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+        
+        //let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(imageName)")
+        print("My ID is:",userid)
+        
+        // update product number
+        let proNum = MyApp.shared.TotalProductNumber + 1
+        ref = Database.database().reference()
+        self.ref.child("userprofiles/\(userid)/numberOfproduct").setValue(proNum)
+        ///
+        
+        //let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(userid)")
+        let profileRef = Storage.storage().reference(withPath: "productsimage/\(imageOrder)\(profileImageFileName)")
+        profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
+            if error == nil {
+                print("Upload profile", metaData)
+                if let profileUrl = metaData?.downloadURL(){
+                    let userProfileRef = Database.database().reference(withPath: "userprofiles/\(userid)/product/product\(MyApp.shared.TotalProductNumber + 1)/image\(imageOrder)")
+                        userProfileRef.setValue(profileUrl.absoluteString)
+                }
+            }
+            else {
+                print("Up load to firebase Storage fail:\(error?.localizedDescription)")
+            }
+        }
         
     }
     func showMessage(title:String, Message:String ){

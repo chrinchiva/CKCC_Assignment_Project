@@ -18,7 +18,8 @@ class MyApp{
         var password: String!
         var imageCount:Int!
         var phone:String!
-    var testingImage:String!
-    
+        var numberOfAllImage:Int!
+        var testingImage:String!
+        var TotalProductNumber : Int!
     //var profileImage:URL!
 }

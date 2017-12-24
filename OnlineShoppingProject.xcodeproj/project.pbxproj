@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B6065663DD910D23143655F /* Pods_OnlineShoppingProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D5E50BEB1089701EE33F44 /* Pods_OnlineShoppingProject.framework */; };
+		E20081141FEF69B0003828CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20081131FEF69B0003828CD /* User.swift */; };
 		E208B3BC1F8A691D00F79403 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208B3BB1F8A691D00F79403 /* CartViewController.swift */; };
 		E208B3C01F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208B3BF1F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift */; };
 		E209355A1F8E302D007E387A /* newExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20935591F8E302D007E387A /* newExampleViewController.swift */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		047EEC912E9C24FE8A3D85D8 /* Pods-OnlineShoppingProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineShoppingProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnlineShoppingProject/Pods-OnlineShoppingProject.release.xcconfig"; sourceTree = "<group>"; };
 		0CE0304570D44D294105549C /* Pods-OnlineShoppingProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineShoppingProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnlineShoppingProject/Pods-OnlineShoppingProject.debug.xcconfig"; sourceTree = "<group>"; };
+		E20081131FEF69B0003828CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E208B3BB1F8A691D00F79403 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		E208B3BF1F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewcontrolllerCartTableViewCell.swift; sourceTree = "<group>"; };
 		E20935591F8E302D007E387A /* newExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newExampleViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +208,6 @@
 				E2106C0E1F850A09000F79D3 /* HomeViewController.swift */,
 				E2106C101F850D8B000F79D3 /* CourseCollectionViewCell.xib */,
 				E20935801F8E3FE0007E387A /* OnlineShoppingProject.xcdatamodeld */,
-				E27FAB871FA0BA2400D226DB /* Article.swift */,
 				E27FAB891FA0BB6900D226DB /* DecodableViewController.swift */,
 				E2F2618F1FB9C36B00EFFE32 /* GoogleService-Info.plist */,
 			);
@@ -219,6 +220,8 @@
 				E250B9441FDE3ADD005458C6 /* UserDetailViewController.swift */,
 				E255647E1FD80AE400B2765D /* LoginFirebaseViewController.swift */,
 				E2DD9A171FE2CDCC005AF87B /* MyApp.swift */,
+				E27FAB871FA0BA2400D226DB /* Article.swift */,
+				E20081131FEF69B0003828CD /* User.swift */,
 				E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */,
 				E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */,
 				E2DD9A1F1FE2F014005AF87B /* LogInViewController.swift */,
@@ -470,6 +473,7 @@
 				E209355C1F8E304A007E387A /* newCollectionViewCell.swift in Sources */,
 				E255647F1FD80AE400B2765D /* LoginFirebaseViewController.swift in Sources */,
 				E27FAB8A1FA0BB6900D226DB /* DecodableViewController.swift in Sources */,
+				E20081141FEF69B0003828CD /* User.swift in Sources */,
 				E20D820E1F8E10710033C497 /* newProductCollectionViewCell.swift in Sources */,
 				E2106BFB1F84EF4C000F79D3 /* DataViewController.swift in Sources */,
 				E2106C0D1F84F2DF000F79D3 /* LoginViewController.swift in Sources */,
