@@ -9,9 +9,31 @@
 import UIKit
 import Firebase
 class homeScreenTableViewController: UITableViewController {
-
+var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
+//        
+//                if Auth.auth().currentUser != nil {
+//                    let uid  = Auth.auth().currentUser?.uid
+//                    ref.child("numberOfAllImage").observeSingleEvent(of: .value, with: { (snapshot) in
+//                        print(snapshot)
+//                        let value = snapshot.value as! Int? ?? 0
+//                        //let result = Decimal(string: value)
+//                        let myApp = MyApp.shared
+//                        myApp.TotalProductNumber = value
+//        
+//                        print("Image productnumber is here:", MyApp.shared.TotalProductNumber)
+//        
+//        
+//        
+//                    }){(error) in
+//                        print(error.localizedDescription)
+//                    }
+//        
+//                }else{
+//        
+//                }
+        
         fetchUser()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }

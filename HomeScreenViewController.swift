@@ -1,43 +1,36 @@
 
 import UIKit
 import Firebase
-// customer information
-var homeIndex: Int = 0
-var title=["iPhone5","Computer Dell"]
-var newImage:[String] = ["5","6","7","8","9","10","11","12","13","14","Nokia","Iphone5"]
-var name=["Chrin Chiva","Ngoun Rithy"]
-var email=["chivachrin@gmail.com","Rithy@gmail.com"]
-var username=["chrinchiva","nhounrithy"]
-var password=["123","123"]
-var telephone1=["010767276","086266007"]
-var telephone2=["",""]
-var cost=[120.0,100.0,300.0,150.0]
-var id=["1","2","3"]
-var address=["kakab, pour senchey","chomka mon, sensok"]
-var newOrold=[true,false]
-var description=["ផលិតផលនេះត្រូវបានប្រើចាប់តាំងពីខែមករាឆ្នាំ២០១៦​, នូវថ្មី%","ផលិតផលនេះត្រូវបានប្រើចាប់តាំងពីខែមករាឆ្នាំ២០១៥, នូវថ្មី៥០%"]
-var image1:[String] = ["5","6"]
-var image2:[String] = ["","7"]
-var image3:[String]=["7","8"]
-var image4:[String]=["8","9"]
-var image5:[String]=["9","10"]
-var shipping=[0.00,0.50,0.00,1.00,0.00]
-var category=["Phone", "Computer PC", "Clothes", "Laptop", "Bag", "Motor"]
- var province:[String] = ["Phnom Penh","Sihanouk","Takeo","Kandal","Battombong","Prey Veng","Kom Pong Speu","Svay Reang","Phnom Penh","Sihanouk","Takeo","Kandal","Battombong","Prey Veng","Kom Pong Speu","Svay Reang"]
+
 var date=[Date(),Date()]
 //
 var testImage = ""
+var globalPrice = ""
+var globalImage = ""
+var globalUser = ""
+var globalPhone = ""
+var globaEmail = ""
+var globalTitle = ""
+
+var myImage :[UIImage]!
 
 class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     @IBOutlet weak var bannerImageView: UIImageView!
     
     @IBOutlet weak var bannerPageController: UIPageControl!
     var users = [User]()
-    var indextItem = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productPrice = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productImage = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productUsername = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productPhone = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productEmail = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    var productTitle = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+
+   
     var index:Int!
     let cellIdentifier = "cell"
     var databaseRef: DatabaseReference!
-
+    var ref: DatabaseReference!
     var timer: Timer!
     var updateCounter: Int!
 
@@ -46,6 +39,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        
         fetchUser()
         updateCounter = 0
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(HomeScreenViewController.updateTimer), userInfo: nil, repeats: true)
@@ -76,10 +72,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
 
         let user = users[indexPath.row]
         
-        
-        
-        
         if let imageUrl = user.profileImageUrl {
+            self.productImage[indexPath.row] = imageUrl
                         let imageUrl = URL(string: imageUrl)!
                         let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
                             if let data = data {
@@ -92,13 +86,24 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                                         print("return true ")
                                         //self.bannerImageView.image = image
                                         cell.newProductImageView.image = image
-                                        cell.newProductlabelView.text = user.username
-                                        if let storename = user.username {
-//                                            self.indextItem.append(storename)
-//                                            let item = self.indextItem[indexPath.row]
-                                            self.indextItem[indexPath.row] = storename
-                                            print("************* Array *******************:", self.indextItem[indexPath.row])
+                                        cell.newProductlabelView.text = user.price! + "$"
+                                        
+                                        if let price = user.price {
+                                            self.productPrice[indexPath.row] = price
                                         }
+                                        if let username = user.username {
+                                            self.productUsername[indexPath.row] = username
+                                        }
+                                        if let userphone = user.phone {
+                                            self.productPhone[indexPath.row] = userphone
+                                        }
+                                        if let email = user.email {
+                                            self.productEmail[indexPath.row] = email
+                                        }
+                                        if let title = user.title{
+                                            self.productTitle[indexPath.row] = title
+                                        }
+                                        
                                     } else {
                                         print("return default ")
                                         self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
@@ -114,32 +119,53 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        print(self.indextItem[indexPath.row])
-        self.performSegue(withIdentifier: "segue_homedetail", sender: self)
+        print(self.productUsername[indexPath.row])
+        print(self.productPrice[indexPath.row])
+         print(self.productPhone[indexPath.row])
+        print(self.productImage[indexPath.row])
+        globalUser = self.productUsername[indexPath.row]
+        globalPrice = self.productPrice[indexPath.row]
+        globalPhone = self.productPhone[indexPath.row]
+        globaEmail = self.productEmail[indexPath.row]
+        globalTitle = self.productTitle[indexPath.row]
+        globalImage = self.productImage[indexPath.row]
+        
+        
+        
+        //let detailInf = MyAppDetail.shared
+        //detailInf.price = self.indextItem[indexPath.row]
+        //detailInf.image = self
+        
+        self.performSegue(withIdentifier: "segue_detail", sender: self)
     }
    
     func fetchUser(){
-        Database.database().reference().child("userprofiles").observe(.childAdded, with: { (snapshot) in
+        getNumberOfAllImage()
+        getNumberOfuserImage()
+        //************************************************
+        // for a in 1...MyApp.shared.numberOfAllImage {
+        Database.database().reference().child("AllimageInformation").observe(.childAdded, with: { (snapshot) in
             print("start print fetch user: ")
             let user = User()
-                let value = snapshot.value as? NSDictionary
-                let username = value?["username"] as? String ?? ""
-                let useremail  = value?["email"] as? String ?? ""
-                let userphone = value?["phone"] as? String ?? ""
-                let userImage = value?["image"] as? String ?? "default_image_select"
-                let iemail = useremail
-                let iphone = userphone
-                let iuser = username
-            var iimage = userImage
-            print("Username:",iuser,"email:",iemail,"Image:",iimage)
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            let price = value?["price"] as? String ?? ""
+            let useremail  = value?["email"] as? String ?? ""
+            let userphone = value?["phone"] as? String ?? ""
+            var productImage = value?["image"] as? String ?? ""
+            var productTitle = value?["productTitle"] as? String ?? ""
+            //var userImage = ""
             
-            // *****************************************
-            //let imageToCache = iimage
-            user.profileImageUrl = iimage
-            //imageCache.setObject(imageToCache, forKey: <#T##AnyObject#>)
-            //user.profileImageUrl = imageToCache
+            //userImage = value?["image\(a)"] as? String ?? "default_image_select"
             
-            user.username = iuser
+            print("Username:",username,"email:",useremail,"Image:",productImage)
+            
+            user.profileImageUrl = productImage
+            user.title = productTitle
+            user.username = username
+            user.price = price
+            user.phone = userphone
+            user.email = useremail
             self.users.append(user)
             
             DispatchQueue.main.async {
@@ -147,40 +173,84 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
             }
             
         }, withCancel: nil)
+        // }
+        //************************************
+        
     }
-    
+    func getNumberOfAllImage(){
+        ref = Database.database().reference()
+        ref.child("numberOfAllImage").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! Int? ?? 0
+            let result = value//Decimal(string: value)
+            print("number of all image is:")
+            print(value)
+            var i = result
+            print(i)
+            let myApp = MyApp.shared
+            myApp.numberOfAllImage = result
+            
+
+            
+        }){(error) in
+            print(error.localizedDescription)
+        }
+    }
+    func getNumberOfuserImage(){
+        if Auth.auth().currentUser != nil {
+            let uID = Auth.auth().currentUser?.uid
+            let imageName = NSUUID.init(uuidString: uID!)
+            ref = Database.database().reference()
+            ref.child("tblUsers").child(uID!).child("numberOfproduct").observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as! Int? ?? 0
+                let result = value//Decimal(string: value)
+                print("myPersonal image is:")
+                print(value)
+                var i = result
+                print(i)
+                let myApp = MyApp.shared
+                myApp.numberOfproduct = result // personal product number
+                
+            }){(error) in
+                print(error.localizedDescription)
+            }
+            
+        } else {
+            
+        }
+       
+    }
     
     
     
     /// no use
-    func downloadImage(){
-        for a in 0...2 {
-            let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
-            let profileRef = Storage.storage().reference(withPath: "productImages/\(a+1)\(profileImageFileName)")
-            profileRef.getData(maxSize: 102240000) { (imageData, error) in
-                if error == nil {
-                    print("Load profile from firebase success",imageData)
-                    
-                    let image = UIImage(data: imageData!)
-                    DispatchQueue.main.async {
-                        if a == 0{
-                            //self.image1View.image = image
-                        }
-                        if a == 1 {
-                            //self.image2View.image = image
-                        }
-                        if a == 2 {
-                            //self.image3View.image = image
-                        }
-                        
-                    }
-                }
-                else {
-                    print("Load profile from Firebase fail:", error?.localizedDescription)
-                }
-            }
-        }
-    }
+//    func downloadImage(){
+//        for a in 0...2 {
+//            let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+//            let profileRef = Storage.storage().reference(withPath: "productImages/\(a+1)\(profileImageFileName)")
+//            profileRef.getData(maxSize: 102240000) { (imageData, error) in
+//                if error == nil {
+//                    print("Load profile from firebase success",imageData)
+//
+//                    let image = UIImage(data: imageData!)
+//                    DispatchQueue.main.async {
+//                        if a == 0{
+//                            //self.image1View.image = image
+//                        }
+//                        if a == 1 {
+//                            //self.image2View.image = image
+//                        }
+//                        if a == 2 {
+//                            //self.image3View.image = image
+//                        }
+//
+//                    }
+//                }
+//                else {
+//                    print("Load profile from Firebase fail:", error?.localizedDescription)
+//                }
+//            }
+//        }
+//    }
     
     
 }

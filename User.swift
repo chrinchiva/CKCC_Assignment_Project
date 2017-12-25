@@ -35,8 +35,13 @@ class User: NSObject {
     var username: String?
     var email: String?
     var profileImageUrl : String?
-    var profileImage = [String]()
-
+    //var profileImage = [String]()
+    var productImage : String?
+    var price: String?
+    var phone: String?
+    var title:String?
+    var GlobalImage:String?
+    
 }
 
 

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-    var selectedImage : UIImage!
+var selectedImage : UIImage!
 class loginController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet var backgroundUIView: UIView!
@@ -26,6 +26,7 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
     
     override func viewDidLoad() {
     super.viewDidLoad()
+         selectedImage = UIImage(named: "default_image_select")
         backgroundUIView.backgroundColor = UIColor(r: 0, g: 151, b: 155)
         loginUIView.backgroundColor = UIColor(r: 0, g: 151, b: 155)
         loginUsernameField.isHidden = true
@@ -33,7 +34,7 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
         loginImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageProfile)))
         checkIfuserisLoggedIn()
         loginImageView.isUserInteractionEnabled = true
-        
+       
         
     }
     // when register or login
@@ -68,12 +69,7 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
             self.performSegue(withIdentifier: "segue_profile", sender: nil)
             }
         }
-        // set number of image
-        if Auth.auth().currentUser != nil {
-            self.ref.child("numberOfAllImage").setValue("1")
-        } else {
-            
-        }
+
     }
     // user signup action
     func handleSignUp(){
@@ -101,8 +97,7 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
             }
             // end signed in
             
-            
-            self.settingUserprofile(username: self.loginUsernameField.text!, email: self.loginEmailField.text!, pass: self.loginPasswordField.text!, phone: self.loginPhoneNumberField.text!)
+                self.settingUserprofile(username: self.loginUsernameField.text!, email: self.loginEmailField.text!, pass: self.loginPasswordField.text!, phone: self.loginPhoneNumberField.text!)
             
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = uusername
@@ -143,13 +138,13 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
         let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
         
         //let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(imageName)")
-        print("My ID is:",userid)
-        let profileRef = Storage.storage().reference(withPath: "users_profile_image/\(userid)")
+        //print("My ID is:",userid)
+        let profileRef = Storage.storage().reference(withPath: "userImageProfiles/\(userid)")
         profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
             if error == nil {
                 print("Upload profile", metaData)
                 if let profileUrl = metaData?.downloadURL(){
-                    let userProfileRef = Database.database().reference(withPath: "userprofiles/\(userid)/image")
+                    let userProfileRef = Database.database().reference(withPath: "tblUsers/\(userid)/profileimage")
                     userProfileRef.setValue(profileUrl.absoluteString)
                 }
             }
@@ -172,14 +167,12 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
     func settingUserprofile(username:String, email:String, pass:String, phone: String){
         if Auth.auth().currentUser != nil {
             let uID = Auth.auth().currentUser?.uid
-            //self.ref.child("userprofiles/\(String(describing: uID))/username").setValue(username)
-            //self.ref.child("userprofiles/\(String(describing: uID))/email").setValue(email)
-            //self.ref.child("userprofiles/\(String(describing: uID))/password").setValue(pass)
-            self.ref.child("userprofiles").child(uID!).child("username").setValue(username)
-            self.ref.child("userprofiles").child(uID!).child("email").setValue(email)
-            self.ref.child("userprofiles").child(uID!).child("password").setValue(pass)
-            self.ref.child("userprofiles").child(uID!).child("phone").setValue(phone)
-            self.ref.child("userprofiles").child(uID!).child("numberOfproduct").setValue(0)
+            let path1 = "tblUsers"
+            self.ref.child(path1).child(uID!).child("username").setValue(username)
+            self.ref.child(path1).child(uID!).child("email").setValue(email)
+            self.ref.child(path1).child(uID!).child("password").setValue(pass)
+            self.ref.child(path1).child(uID!).child("phone").setValue(phone)
+            self.ref.child(path1).child(uID!).child("numberOfproduct").setValue(0)
             
             self.uploadProfileImage(selectedImageProfile: selectedImage, userid: uID!)
         } else {

@@ -72,13 +72,13 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
     func loadSingleFile(){
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
-        ref.child("userprofiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("tblUsers").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
             let useremail  = value?["email"] as? String ?? ""
             let userphone = value?["phone"] as? String ?? ""
-            let userImage = value?["image"] as? String ?? "default_image_select"
+            let userImage = value?["profileimage"] as? String ?? "default_image_select"
             let iemail = useremail
             let iphone = userphone
             let iuser = username
@@ -107,40 +107,44 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
             print(error.localizedDescription)
         }
         // load number of image posted by users
+        ref = Database.database().reference()
         ref.child("numberOfAllImage").observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as! String? ?? "0"
-            let result = Decimal(string: value)
+            let value = snapshot.value as! Int? ?? 0
+            //let result = Decimal(string: value)
             print("Image number image is here:")
+            let result = value
             print(value)
-            var i = result!
-            print(i)
-
+            //var i = result!
+            //print(i)
+            let myApp = MyApp.shared
+            myApp.numberOfAllImage = result
+            
         }){(error) in
             print(error.localizedDescription)
         }
         // load number of product number
         
-        if Auth.auth().currentUser != nil {
-            let uid  = Auth.auth().currentUser?.uid
-            //"userprofiles/\(userid)/product/product1/image\(imageOrder)"
-            ref.child("userprofiles").child(userID!).child("numberOfproduct").observeSingleEvent(of: .value, with: { (snapshot) in
-                print(snapshot)
-                let value = snapshot.value as! Int? ?? 0
-                //let result = Decimal(string: value)
-                let myApp = MyApp.shared
-                myApp.TotalProductNumber = value
-                
-                print("Image productnumber is here:", MyApp.shared.TotalProductNumber)
-               
-                
-                
-            }){(error) in
-                print(error.localizedDescription)
-            }
-
-        }else{
-            
-        }
+//        if Auth.auth().currentUser != nil {
+//            let uid  = Auth.auth().currentUser?.uid
+//            //"userprofiles/\(userid)/product/product1/image\(imageOrder)"
+//            ref.child("userprofiles").child(userID!).child("numberOfproduct").observeSingleEvent(of: .value, with: { (snapshot) in
+//                print(snapshot)
+//                let value = snapshot.value as! Int? ?? 0
+//                //let result = Decimal(string: value)
+//                let myApp = MyApp.shared
+//                myApp.TotalProductNumber = value
+//                
+//                print("Image productnumber is here:", MyApp.shared.TotalProductNumber)
+//               
+//                
+//                
+//            }){(error) in
+//                print(error.localizedDescription)
+//            }
+//
+//        }else{
+//            
+//        }
     }
     func loadImagefromFirebaseDB(imageUrl: String){
         let imageUrl = URL(string: imageUrl)!

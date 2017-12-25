@@ -19,8 +19,9 @@ class MyApp{
         var imageCount:Int!
         var phone:String!
         var numberOfAllImage:Int!
+        var numberOfproduct:Int!
         var testingImage:String!
-        var TotalProductNumber : Int!
+//        var TotalProductNumber : Int!
     var profileImage = [String]()
     //var profileImage:URL!
 }

@@ -230,8 +230,8 @@
 				E2E15EBC1FE3889C00FDE70D /* loginController.swift */,
 				E2E15EBE1FE3987300FDE70D /* profileController.swift */,
 				E25EB0721FEC0BA200470289 /* SellController.swift */,
-				E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */,
 				E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */,
+				E20EF1841F9A639E000FA848 /* DetailProductViewController.swift */,
 			);
 			name = Online;
 			path = ..;
@@ -269,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				E28234CC1F8957AA00518894 /* recentlyViewFooter.xib */,
-				E20EF1841F9A639E000FA848 /* DetailProductViewController.swift */,
+				E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */,
 				E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */,
 				E20EED5A1F8A1E6000F1602E /* SearchHistoryViewController.swift */,
 				E20EED5C1F8A1EFC00F1602E /* SearchHistories.swift */,
