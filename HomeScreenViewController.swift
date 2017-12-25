@@ -1,10 +1,3 @@
-//
-//  HomeScreenViewController.swift
-//  OnlineShoppingProject
-//
-//  Created by petersoeun on 10/8/17.
-//  Copyright © 2017 RoboCam. All rights reserved.
-//
 
 import UIKit
 import Firebase
@@ -40,7 +33,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var bannerPageController: UIPageControl!
     var users = [User]()
-    var indextItem : [String]!
+    var indextItem = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
     var index:Int!
     let cellIdentifier = "cell"
     var databaseRef: DatabaseReference!
@@ -75,47 +68,37 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     // collection data view of new product 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return users.count
+        
     }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as! newProductCollectionViewCell
-        //cell.newProductImageView.image = UIImage(named: image1[indexPath.row] + ".jpg")
-        //let viewCost = cost[indexPath.row]
-        //cell.newProductlabelView.text = "US $\(viewCost)"
-        
-        //cell.newProductImageView.image = UIImage(named: "default_image_select")
-        
-//        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
-//        //let profileRef = Storage.storage().reference(withPath: "productImages/\(indexPath.row+1)\(profileImageFileName)")
-//        let profileRef = Storage.storage().reference(withPath: "users_profile_image/")
-//        profileRef.getData(maxSize: 102240000) { (imageData, error) in
-//            if error == nil {
-//                print("Load profile from firebase success",imageData)
-//
-//                let image = UIImage(data: imageData!)
-//                DispatchQueue.main.async {
-//                    cell.newProductImageView.image = image
-//
-//                }
-//            }
-//            else {
-//                print("Load profile from Firebase fail:", error?.localizedDescription)
-//            }
-//        }
+
         let user = users[indexPath.row]
+        
+        
+        
+        
         if let imageUrl = user.profileImageUrl {
-            
                         let imageUrl = URL(string: imageUrl)!
                         let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
                             if let data = data {
                                 print("the respone data is")
                                 print(data)
                                 let image = UIImage(data: data)
+                                
                                 DispatchQueue.main.async {
                                     if image != nil {
                                         print("return true ")
                                         //self.bannerImageView.image = image
                                         cell.newProductImageView.image = image
                                         cell.newProductlabelView.text = user.username
+                                        if let storename = user.username {
+//                                            self.indextItem.append(storename)
+//                                            let item = self.indextItem[indexPath.row]
+                                            self.indextItem[indexPath.row] = storename
+                                            print("************* Array *******************:", self.indextItem[indexPath.row])
+                                        }
                                     } else {
                                         print("return default ")
                                         self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
@@ -128,7 +111,13 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(self.indextItem[indexPath.row])
+        self.performSegue(withIdentifier: "segue_homedetail", sender: self)
+    }
+   
     func fetchUser(){
         Database.database().reference().child("userprofiles").observe(.childAdded, with: { (snapshot) in
             print("start print fetch user: ")
@@ -145,9 +134,14 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
             print("Username:",iuser,"email:",iemail,"Image:",iimage)
             
             // *****************************************
+            //let imageToCache = iimage
             user.profileImageUrl = iimage
+            //imageCache.setObject(imageToCache, forKey: <#T##AnyObject#>)
+            //user.profileImageUrl = imageToCache
+            
             user.username = iuser
             self.users.append(user)
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -155,10 +149,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }, withCancel: nil)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        self.performSegue(withIdentifier: "segue_homedetail", sender: self)
-    }
+    
     
     
     /// no use
@@ -193,3 +184,26 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     
 }
+//cell.newProductImageView.image = UIImage(named: image1[indexPath.row] + ".jpg")
+//let viewCost = cost[indexPath.row]
+//cell.newProductlabelView.text = "US $\(viewCost)"
+
+//cell.newProductImageView.image = UIImage(named: "default_image_select")
+
+//        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
+//        //let profileRef = Storage.storage().reference(withPath: "productImages/\(indexPath.row+1)\(profileImageFileName)")
+//        let profileRef = Storage.storage().reference(withPath: "users_profile_image/")
+//        profileRef.getData(maxSize: 102240000) { (imageData, error) in
+//            if error == nil {
+//                print("Load profile from firebase success",imageData)
+//
+//                let image = UIImage(data: imageData!)
+//                DispatchQueue.main.async {
+//                    cell.newProductImageView.image = image
+//
+//                }
+//            }
+//            else {
+//                print("Load profile from Firebase fail:", error?.localizedDescription)
+//            }
+//        }
