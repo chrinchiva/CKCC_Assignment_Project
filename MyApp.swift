@@ -21,5 +21,6 @@ class MyApp{
         var numberOfAllImage:Int!
         var testingImage:String!
         var TotalProductNumber : Int!
+    var profileImage = [String]()
     //var profileImage:URL!
 }

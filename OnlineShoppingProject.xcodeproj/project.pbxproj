@@ -69,6 +69,7 @@
 		E2E15EBD1FE3889C00FDE70D /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E15EBC1FE3889C00FDE70D /* loginController.swift */; };
 		E2E15EBF1FE3987300FDE70D /* profileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E15EBE1FE3987300FDE70D /* profileController.swift */; };
 		E2E1CDE51F934B39004CBC1A /* provinceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */; };
+		E2E338E01FF018D2009C5352 /* homeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		E2E15EBC1FE3889C00FDE70D /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
 		E2E15EBE1FE3987300FDE70D /* profileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileController.swift; sourceTree = "<group>"; };
 		E2E1CDE41F934B39004CBC1A /* provinceNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = provinceNameViewController.swift; sourceTree = "<group>"; };
+		E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeScreenTableViewController.swift; sourceTree = "<group>"; };
 		E2F2618F1FB9C36B00EFFE32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D5E50BEB1089701EE33F44 /* Pods_OnlineShoppingProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineShoppingProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -228,6 +230,8 @@
 				E2E15EBC1FE3889C00FDE70D /* loginController.swift */,
 				E2E15EBE1FE3987300FDE70D /* profileController.swift */,
 				E25EB0721FEC0BA200470289 /* SellController.swift */,
+				E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */,
+				E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */,
 			);
 			name = Online;
 			path = ..;
@@ -269,7 +273,6 @@
 				E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */,
 				E20EED5A1F8A1E6000F1602E /* SearchHistoryViewController.swift */,
 				E20EED5C1F8A1EFC00F1602E /* SearchHistories.swift */,
-				E20EED661F8A34A600F1602E /* HomeScreenViewController.swift */,
 				E20D820D1F8E10710033C497 /* newProductCollectionViewCell.swift */,
 				E208B3BB1F8A691D00F79403 /* CartViewController.swift */,
 				E208B3BF1F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift */,
@@ -450,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E338E01FF018D2009C5352 /* homeScreenTableViewController.swift in Sources */,
 				E27FAB881FA0BA2400D226DB /* Article.swift in Sources */,
 				E2106BF91F84EF4C000F79D3 /* RootViewController.swift in Sources */,
 				E2DD9A201FE2F014005AF87B /* LogInViewController.swift in Sources */,

@@ -18,6 +18,7 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var backgroundUIView: UIView!
     @IBOutlet weak var profilePhoneView: UILabel!
+    @IBOutlet weak var navigationBarWithLogout: UINavigationBar!
     
     var ref: DatabaseReference!
     var handleUsername: DatabaseHandle?
@@ -88,6 +89,7 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
             self.profileUsername.text = iuser
             self.profileEmail.text = iemail
             self.profilePhoneView.text = iphone
+
             print("My profile image is : ***********:")
             print(iimage)
             // save data off line
