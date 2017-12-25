@@ -40,15 +40,17 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var bannerPageController: UIPageControl!
     var users = [User]()
+    var indextItem : [String]!
+    var index:Int!
     let cellIdentifier = "cell"
     var databaseRef: DatabaseReference!
 
     var timer: Timer!
     var updateCounter: Int!
-    // firebase variable
+
     @IBOutlet weak var collectionView: UICollectionView!
     
-//    var users = [User]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
@@ -73,7 +75,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     // collection data view of new product 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return users.count
-        //return 100
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as! newProductCollectionViewCell
@@ -103,7 +104,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
         let user = users[indexPath.row]
         if let imageUrl = user.profileImageUrl {
             
-            
                         let imageUrl = URL(string: imageUrl)!
                         let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
                             if let data = data {
@@ -115,7 +115,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                                         print("return true ")
                                         //self.bannerImageView.image = image
                                         cell.newProductImageView.image = image
-            
+                                        cell.newProductlabelView.text = user.username
                                     } else {
                                         print("return default ")
                                         self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
@@ -125,9 +125,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                             }
                         }
                         task.resume()
-            
-            
-            
         }
         return cell
     }
@@ -146,46 +143,25 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 let iuser = username
             var iimage = userImage
             print("Username:",iuser,"email:",iemail,"Image:",iimage)
+            
             // *****************************************
             user.profileImageUrl = iimage
+            user.username = iuser
             self.users.append(user)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
             
-//            let imageUrl = URL(string: testImage)!
-//            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-//                if let data = data {
-//                    print("the respone data is")
-//                    print(data)
-//                    let image = UIImage(data: data)
-//                    DispatchQueue.main.async {
-//                        if image != nil {
-//                            print("return true ")
-//                            self.bannerImageView.image = image
-//
-//                        } else {
-//                            print("return default ")
-//                            self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
-//
-//                        }
-//                    }
-//                }
-//            }
-//            task.resume()
-            
         }, withCancel: nil)
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        homeIndex = indexPath.row
+        print(indexPath.row)
         self.performSegue(withIdentifier: "segue_homedetail", sender: self)
     }
     
     
-    
-    
-    
-    
+    /// no use
     func downloadImage(){
         for a in 0...2 {
             let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
