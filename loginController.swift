@@ -174,6 +174,13 @@ class loginController: UIViewController, UIImagePickerControllerDelegate, UINavi
             self.ref.child(path1).child(uID!).child("phone").setValue(phone)
             self.ref.child(path1).child(uID!).child("numberOfproduct").setValue(0)
             
+            let path2 = "userAddCart"
+            ref = Database.database().reference()
+            //let path3 = "image\(newCartNumber)"
+            self.ref.child(path2).child(uID!).child("addCartNumber").setValue(0)
+            //self.ref.child(path1).child(uID!).child("product").child(path2).setValue(globalUserID)
+            
+            
             self.uploadProfileImage(selectedImageProfile: selectedImage, userid: uID!)
         } else {
             

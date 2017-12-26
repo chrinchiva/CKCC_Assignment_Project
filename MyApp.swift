@@ -21,6 +21,8 @@ class MyApp{
         var numberOfAllImage:Int!
         var numberOfproduct:Int!
         var testingImage:String!
+    
+    var addCartNumber:Int!
 //        var TotalProductNumber : Int!
     var profileImage = [String]()
     //var profileImage:URL!

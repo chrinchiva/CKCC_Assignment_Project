@@ -11,7 +11,7 @@ var globalUser = ""
 var globalPhone = ""
 var globaEmail = ""
 var globalTitle = ""
-
+var globalUserID = ""
 var myImage :[UIImage]!
 
 class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
@@ -25,7 +25,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     var productPhone = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
     var productEmail = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
     var productTitle = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
-
+var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
    
     var index:Int!
     let cellIdentifier = "cell"
@@ -40,15 +40,23 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         fetchUser()
         updateCounter = 0
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(HomeScreenViewController.updateTimer), userInfo: nil, repeats: true)
 
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        getNumberOfAllImage()
+        getNumberOfuserImage()
+        loadAddCartNumber()
+    }
+    override func viewWillLayoutSubviews() {
+        //fetchUser()
+//        getNumberOfAllImage()
+//        getNumberOfuserImage()
+//        loadAddCartNumber()
+    }
     func updateTimer() {
         if(updateCounter <= 3){
             bannerPageController.currentPage = updateCounter
@@ -103,6 +111,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
                                         if let title = user.title{
                                             self.productTitle[indexPath.row] = title
                                         }
+                                        if let UserID = user.UserID {
+                                            self.productUserID[indexPath.row] = UserID
+                                        }
                                         
                                     } else {
                                         print("return default ")
@@ -123,6 +134,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
         print(self.productPrice[indexPath.row])
          print(self.productPhone[indexPath.row])
         print(self.productImage[indexPath.row])
+        globalUserID = self.productUserID[indexPath.row]
         globalUser = self.productUsername[indexPath.row]
         globalPrice = self.productPrice[indexPath.row]
         globalPhone = self.productPhone[indexPath.row]
@@ -154,6 +166,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
             let userphone = value?["phone"] as? String ?? ""
             var productImage = value?["image"] as? String ?? ""
             var productTitle = value?["productTitle"] as? String ?? ""
+            var userID = value?["UserID"] as? String ?? ""
             //var userImage = ""
             
             //userImage = value?["image\(a)"] as? String ?? "default_image_select"
@@ -161,6 +174,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
             print("Username:",username,"email:",useremail,"Image:",productImage)
             
             user.profileImageUrl = productImage
+            user.UserID = userID
             user.title = productTitle
             user.username = username
             user.price = price
@@ -195,6 +209,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
             print(error.localizedDescription)
         }
     }
+  
     func getNumberOfuserImage(){
         if Auth.auth().currentUser != nil {
             let uID = Auth.auth().currentUser?.uid
@@ -220,6 +235,28 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
        
     }
     
+    func loadAddCartNumber(){
+        if Auth.auth().currentUser != nil {
+            DispatchQueue.main.async {
+                let uID = Auth.auth().currentUser?.uid
+                self.ref = Database.database().reference()
+                self.ref.child("userAddCart").child(uID!).child("addCartNumber").observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as! Int? ?? 0
+                    let result = value//Decimal(string: value)
+                    print("number add cart image:")
+                    print(value)
+                    let myApp = MyApp.shared
+                    myApp.addCartNumber = value // number of cart
+                    print("current add cart number is:",value)
+                    
+                }){(error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }else{
+            
+        }
+    }
     
     
     /// no use

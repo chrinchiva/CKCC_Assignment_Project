@@ -41,6 +41,9 @@ class User: NSObject {
     var phone: String?
     var title:String?
     var GlobalImage:String?
+    var UserID:String?
+    
+    var cartImageName :String?
     
 }
 

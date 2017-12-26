@@ -184,7 +184,7 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // upload information to firebase
         let path1 = "AllimageInformation/image\(proNum)"
         
-        self.ref.child(path1).child("UserID").setValue(userid)
+        self.ref.child(path1).child("UserID").setValue("image\(proNum)")
         self.ref.child(path1).child("productTitle").setValue(productTitleTextField.text)
         self.ref.child(path1).child("phone").setValue(sellerPhoneNumberTextField.text)
         self.ref.child(path1).child("price").setValue(priceOfProductTextField.text)
