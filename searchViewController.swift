@@ -30,6 +30,10 @@ class searchViewController: UIViewController, UITableViewDataSource, UISearchBar
         //return currentProductArray.count
         return users.count
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         globalUserID = productTitleArray[indexPath.row]
+        self.performSegue(withIdentifier: "segue_search_detail", sender: self)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell_search") as? searchTableViewCell else {
@@ -42,8 +46,8 @@ class searchViewController: UIViewController, UITableViewDataSource, UISearchBar
         let user = users[indexPath.row]
         
         if let imageUrl = user.productImage {
-
             let imageUrl = URL(string: imageUrl)!
+            
             let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
                 if let data = data {
                     print("the respone data is")

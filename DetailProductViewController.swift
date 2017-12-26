@@ -19,18 +19,12 @@ class DetailProductViewController: UIViewController, UICollectionViewDataSource,
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelTel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var labeDescription: UILabel!
     var ref : DatabaseReference!
     var total:Double = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        detailCostLabel.text = globalPrice + "$"
-//        labelSeller.text = globalUser
-//        labelTel.text = globalPhone
-//        labelEmail.text = globaEmail
-//        labelTitle.text = globalTitle
-//        detailTotalLabel.text = "US$ " + globalPrice
-//        loadProductImage()
         loadAddCartNumber()
         print("User id global si:",globalUserID)
         loadinformation(imageID: globalUserID)
@@ -52,14 +46,16 @@ class DetailProductViewController: UIViewController, UICollectionViewDataSource,
             let price = value?["price"] as? String ?? ""
             let image = value?["image"] as? String ?? ""
             let title = value?["productTitle"] as? String ?? ""
+            let description = value?["description"] as? String ?? ""
             
-            let iimage = image
+                let iimage = image
                     self.detailCostLabel.text = price + "$"
                    self.labelSeller.text = username
                    self.labelTel.text = phone
                     self.labelEmail.text = email
                     self.labelTitle.text = title
                     self.detailTotalLabel.text = "US$ " + price
+                    self.labeDescription.text = description
             DispatchQueue.main.async {
                 self.loadImagefromFirebaseDB(imageUrl: iimage)
             }

@@ -16,7 +16,8 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var productTitleTextField: UITextField!
     @IBOutlet weak var sellerPhoneNumberTextField: UITextField!
     @IBOutlet weak var priceOfProductTextField: UITextField!
-        @IBOutlet weak var productCategoryTextField: UITextField!
+    @IBOutlet weak var disciptionProductTextField: UITextField!
+    @IBOutlet weak var productCategoryTextField: UITextField!
     var imageOrder = 0
     var selectedImage:[UIImage]!
     //var imageProduct : [UIImage]!
@@ -192,6 +193,7 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.ref.child(path1).child("price").setValue(priceOfProductTextField.text)
         self.ref.child(path1).child("category").setValue(productCategoryTextField.text)
         self.ref.child(path1).child("category").setValue(productCategoryTextField.text)
+        self.ref.child(path1).child("description").setValue(disciptionProductTextField.text)
         
         self.ref.child(path1).child("username").setValue(MyApp.shared.username)
         self.ref.child(path1).child("email").setValue(MyApp.shared.email)

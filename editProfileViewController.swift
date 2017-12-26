@@ -17,6 +17,7 @@ class editProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var phoneChangeText: UITextField!
     @IBOutlet weak var newPasswordChangeText: UITextField!
     @IBOutlet weak var oldPasswordChangeText: UITextField!
+    @IBOutlet weak var discriptionChangeText: UITextField!
     var ref : DatabaseReference!
     
     override func viewDidLoad() {

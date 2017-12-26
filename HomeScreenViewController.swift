@@ -26,7 +26,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDataSource, UI
     var productEmail = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
     var productTitle = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
 var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
-   
+var productTitleArray = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
+    
     var index:Int!
     let cellIdentifier = "cell"
     var databaseRef: DatabaseReference!
@@ -40,16 +41,17 @@ var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchUser()
+        //fetchUser()
+        fetchUser2()
         updateCounter = 0
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(HomeScreenViewController.updateTimer), userInfo: nil, repeats: true)
 
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.collectionView.reloadData()
-        getNumberOfAllImage()
-        getNumberOfuserImage()
+        //self.collectionView.reloadData()
+        //getNumberOfAllImage()
+        //getNumberOfuserImage()
         //fetchUser()
         loadAddCartNumber()
     }
@@ -95,71 +97,142 @@ var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as! newProductCollectionViewCell
-
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as! newProductCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_newproduct", for: indexPath) as? newProductCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         let user = users[indexPath.row]
+        //let user = users[indexPath.row]
         
-        if let imageUrl = user.profileImageUrl {
-            self.productImage[indexPath.row] = imageUrl
-                        let imageUrl = URL(string: imageUrl)!
-                        let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                            if let data = data {
-                                print("the respone data is")
-                                print(data)
-                                let image = UIImage(data: data)
-                                
-                                DispatchQueue.main.async {
-                                    if image != nil {
-                                        print("return true ")
-                                        //self.bannerImageView.image = image
-                                        cell.newProductImageView.image = image
-                                        cell.newProductlabelView.text = user.price! + "$"
-                                        
-                                        if let price = user.price {
-                                            self.productPrice[indexPath.row] = price
-                                        }
-                                        if let username = user.username {
-                                            self.productUsername[indexPath.row] = username
-                                        }
-                                        if let userphone = user.phone {
-                                            self.productPhone[indexPath.row] = userphone
-                                        }
-                                        if let email = user.email {
-                                            self.productEmail[indexPath.row] = email
-                                        }
-                                        if let title = user.title{
-                                            self.productTitle[indexPath.row] = title
-                                        }
-                                        if let UserID = user.UserID {
-                                            self.productUserID[indexPath.row] = UserID
-                                        }
-                                        
-                                    } else {
-                                        print("return default ")
-                                        self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
+        if let imageUrl = user.productImage {
+            let imageUrl = URL(string: imageUrl)!
             
-                                    }
-                                }
-                            }
+            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let data = data {
+                    print("the respone data is")
+                    print(data)
+                    let image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+//                        cell..text = user.price! + "$"
+//                        cell.labelName.text = user.title
+                        cell.newProductlabelView.text = user.price! + "$"
+                        self.productTitleArray[indexPath.row] = user.UserID!
+                        print("My array product title is:",self.productTitleArray[indexPath.row])
+                        if image != nil {
+                            print("return true ")
+                            //cell.newProductlabelView.image = image
+                           cell.newProductImageView.image = image
+                            
+                        } else {
+                            print("return default ")
+                            cell.newProductImageView.image  = #imageLiteral(resourceName: "default_image_select")
+                            
                         }
-                        task.resume()
+                    }
+                }
+            }
+            task.resume()
         }
         return cell
+        
+//        if let imageUrl1 = user.profileImageUrl {
+//            //self.productImage[indexPath.row] = imageUrl
+//            //let imageurl = URL(string : imageUrl)!
+//                        let imageUrl = URL(string: imageUrl1)!
+//                        let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+//                            if let data = data {
+//                                print("the respone data is")
+//                                print(data)
+//                                let image = UIImage(data: data)
+//
+//                                DispatchQueue.main.async {
+//                                    if image != nil {
+//                                        print("return true ")
+//                                        //self.bannerImageView.image = image
+//                                        cell.newProductImageView.image = image
+//                                        cell.newProductlabelView.text = user.price! + "$"
+//
+//                                        if let price = user.price {
+//                                            self.productPrice[indexPath.row] = price
+//                                        }
+//                                        if let username = user.username {
+//                                            self.productUsername[indexPath.row] = username
+//                                        }
+//                                        if let userphone = user.phone {
+//                                            self.productPhone[indexPath.row] = userphone
+//                                        }
+//                                        if let email = user.email {
+//                                            self.productEmail[indexPath.row] = email
+//                                        }
+//                                        if let title = user.title{
+//                                            self.productTitle[indexPath.row] = title
+//                                        }
+//                                        if let UserID = user.UserID {
+//                                            self.productUserID[indexPath.row] = UserID
+//                                        }
+//
+//                                    } else {
+//                                        print("return default ")
+//                                        self.bannerImageView.image = #imageLiteral(resourceName: "default_image_select")
+//
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        task.resume()
+//        }
+//        return cell
     }
+    func fetchUser2(){
+        getNumberOfAllImage()
+        getNumberOfuserImage()
+        // for a in 1...MyApp.shared.numberOfAllImage {
+        Database.database().reference().child("AllimageInformation").observe(.childAdded, with: { (snapshot) in
+            let user = User()
+            let value = snapshot.value as? NSDictionary
+            let userID = value?["UserID"] as? String ?? ""
+            var productImage = value?["image"] as? String ?? ""
+            var productTitle = value?["productTitle"] as? String ?? ""
+            var price = value?["price"] as? String ?? ""
+            // print("Username:",username,"email:",useremail,"Image:",productImage)
+            
+            user.productImage = productImage
+            user.UserID = userID
+            user.title = productTitle
+            user.price = price
+            //user.title = productTitle
+            //            user.username = username
+            //            user.price = price
+            //            user.phone = userphone
+            //            user.email = useremail
+            self.users.append(user)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+        }, withCancel: nil)
+        // }
+        //************************************
+        
     
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        print(self.productUsername[indexPath.row])
-        print(self.productPrice[indexPath.row])
-         print(self.productPhone[indexPath.row])
-        print(self.productImage[indexPath.row])
-        globalUserID = self.productUserID[indexPath.row]
-        globalUser = self.productUsername[indexPath.row]
-        globalPrice = self.productPrice[indexPath.row]
-        globalPhone = self.productPhone[indexPath.row]
-        globaEmail = self.productEmail[indexPath.row]
-        globalTitle = self.productTitle[indexPath.row]
-        globalImage = self.productImage[indexPath.row]
+        globalUserID = productTitleArray[indexPath.row]
+        self.performSegue(withIdentifier: "segue_detail", sender: self)
+//        print(self.productUsername[indexPath.row])
+//        print(self.productPrice[indexPath.row])
+//         print(self.productPhone[indexPath.row])
+//        print(self.productImage[indexPath.row])
+//        globalUserID = self.productUserID[indexPath.row]
+//        globalUser = self.productUsername[indexPath.row]
+//        globalPrice = self.productPrice[indexPath.row]
+//        globalPhone = self.productPhone[indexPath.row]
+//        globaEmail = self.productEmail[indexPath.row]
+//        globalTitle = self.productTitle[indexPath.row]
+//        globalImage = self.productImage[indexPath.row]
         
         
         
@@ -167,7 +240,7 @@ var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"
         //detailInf.price = self.indextItem[indexPath.row]
         //detailInf.image = self
         
-        self.performSegue(withIdentifier: "segue_detail", sender: self)
+        
     }
    
     func fetchUser(){
