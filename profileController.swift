@@ -190,21 +190,7 @@ class profileController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     @IBAction func onClickEditButton(_ sender: UIBarButtonItem) {
-//        let myImage = #imageLiteral(resourceName: "ic_list_2x")
-//        let myImageData = UIImageJPEGRepresentation(myImage, 0.75)
-//
-//        let profileImageFileName = Auth.auth().currentUser!.uid + ".jpg"
-//        let profileRef = Storage.storage().reference(withPath: "profile/\(profileImageFileName)")
-//        profileRef.putData(myImageData!, metadata: nil) { (metaData, error) in
-//            if error == nil {
-//                print("Upload profile", metaData)
-//            }
-//            else {
-//                print("Up load to firebase Storage fail:\(error?.localizedDescription)")
-//            }
-//
-//        }
-        
+        performSegue(withIdentifier: "segue_editprofile", sender: nil)
         
     }
     

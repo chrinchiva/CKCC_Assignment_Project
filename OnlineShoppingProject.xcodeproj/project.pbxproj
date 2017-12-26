@@ -47,6 +47,7 @@
 		E2A57ECA1F9270AB00D3C307 /* sellProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */; };
 		E2CE7D711FF1F09600830F60 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE7D701FF1F09600830F60 /* searchViewController.swift */; };
 		E2CE7D731FF1F11F00830F60 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE7D721FF1F11F00830F60 /* searchTableViewCell.swift */; };
+		E2CE7D791FF20F2F00830F60 /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE7D781FF20F2F00830F60 /* editProfileViewController.swift */; };
 		E2DD9A181FE2CDCC005AF87B /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A171FE2CDCC005AF87B /* MyApp.swift */; };
 		E2DD9A1C1FE2DE0F005AF87B /* ImageUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */; };
 		E2DD9A1E1FE2EC07005AF87B /* NewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */; };
@@ -104,6 +105,7 @@
 		E2CE7D751FF203C600830F60 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		E2CE7D761FF2041900830F60 /* banner1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner1.jpg; sourceTree = "<group>"; };
 		E2CE7D771FF2043A00830F60 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		E2CE7D781FF20F2F00830F60 /* editProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		E2DD9A171FE2CDCC005AF87B /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadManager.swift; sourceTree = "<group>"; };
 		E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				E208B3BB1F8A691D00F79403 /* CartViewController.swift */,
 				E2CE7D701FF1F09600830F60 /* searchViewController.swift */,
 				E2CE7D721FF1F11F00830F60 /* searchTableViewCell.swift */,
+				E2CE7D781FF20F2F00830F60 /* editProfileViewController.swift */,
 			);
 			name = Online;
 			path = ..;
@@ -386,6 +389,7 @@
 			files = (
 				E2E338E01FF018D2009C5352 /* homeScreenTableViewController.swift in Sources */,
 				E27FAB881FA0BA2400D226DB /* Article.swift in Sources */,
+				E2CE7D791FF20F2F00830F60 /* editProfileViewController.swift in Sources */,
 				E2106BF91F84EF4C000F79D3 /* RootViewController.swift in Sources */,
 				E2DD9A201FE2F014005AF87B /* LogInViewController.swift in Sources */,
 				E208B3C01F8A740700F79403 /* ViewcontrolllerCartTableViewCell.swift in Sources */,

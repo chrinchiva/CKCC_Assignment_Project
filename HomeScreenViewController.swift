@@ -47,8 +47,10 @@ var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.reloadData()
         getNumberOfAllImage()
         getNumberOfuserImage()
+        //fetchUser()
         loadAddCartNumber()
     }
     override func viewWillLayoutSubviews() {

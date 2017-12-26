@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class searchViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate{
-
-
+    var productTitleArray = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"]
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tabel: UITableView!
     var productArray = [Products]() // to setup table
     var currentProductArray = [Products]()
+    var ref: DatabaseReference!
+    var users = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
+       fetchUser()
         setProduct()
         setUpSearchBar()
        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentProductArray.count
+        //return currentProductArray.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,15 +36,46 @@ class searchViewController: UIViewController, UITableViewDataSource, UISearchBar
             return UITableViewCell()
         }
         
-        cell.labelName.text = currentProductArray[indexPath.row].category.rawValue
-        cell.productPrice.text = currentProductArray[indexPath.row].price
-        cell.imageViewProduct.image = UIImage(named: currentProductArray[indexPath.row].title)
+//        cell.labelName.text = currentProductArray[indexPath.row].category.rawValue
+//        cell.productPrice.text = currentProductArray[indexPath.row].price
+//        cell.imageViewProduct.image = UIImage(named: currentProductArray[indexPath.row].title)
+        let user = users[indexPath.row]
+        
+        if let imageUrl = user.productImage {
+
+            let imageUrl = URL(string: imageUrl)!
+            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let data = data {
+                    print("the respone data is")
+                    print(data)
+                    let image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+                        cell.productPrice.text = user.price! + "$"
+                        cell.labelName.text = user.title
+                        self.productTitleArray[indexPath.row] = user.title!
+                        print("My array product title is:",self.productTitleArray[indexPath.row])
+                        if image != nil {
+                            print("return true ")
+                            cell.imageViewProduct.image = image
+                            
+                        } else {
+                            print("return default ")
+                            cell.imageViewProduct.image = #imageLiteral(resourceName: "default_image_select")
+                            
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
         return cell
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
-            currentProductArray = productArray
+            //currentProductArray = productArray
+            //currentProductArray = productTitleArray
              tabel.reloadData()
             return
             
@@ -66,7 +102,38 @@ class searchViewController: UIViewController, UITableViewDataSource, UISearchBar
         productArray.append(Products(title: "Image-6", price: "600$", category: .Phone))
         currentProductArray = productArray
     }
-    
+    func fetchUser(){
+
+        // for a in 1...MyApp.shared.numberOfAllImage {
+        Database.database().reference().child("AllimageInformation").observe(.childAdded, with: { (snapshot) in
+            let user = User()
+            let value = snapshot.value as? NSDictionary
+            let userID = value?["UserID"] as? String ?? ""
+            var productImage = value?["image"] as? String ?? ""
+            var productTitle = value?["productTitle"] as? String ?? ""
+            var price = value?["price"] as? String ?? ""
+            // print("Username:",username,"email:",useremail,"Image:",productImage)
+            
+            user.productImage = productImage
+            user.UserID = userID
+            user.title = productTitle
+            user.price = price
+            //user.title = productTitle
+//            user.username = username
+//            user.price = price
+//            user.phone = userphone
+//            user.email = useremail
+            self.users.append(user)
+            
+            DispatchQueue.main.async {
+                self.tabel.reloadData()
+            }
+            
+        }, withCancel: nil)
+        // }
+        //************************************
+        
+    }
 
 }
 class Products {

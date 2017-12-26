@@ -172,12 +172,14 @@ class SellController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 if let profileUrl = metaData?.downloadURL(){
                     let userProfileRef = Database.database().reference(withPath: "AllimageInformation/image\(proNum)/image")
                     userProfileRef.setValue(profileUrl.absoluteString)
+                    
                 }
                 
             }
             else {
                 print("Up load to firebase Storage fail:\(error?.localizedDescription)")
             }
+            self.showMessage(title: "Information", Message: "your product uploaded.")
         }
     }
     func productInforUpload(proNum:Int, userid:String){
