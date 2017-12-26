@@ -100,6 +100,10 @@
 		E2A57EC91F9270AB00D3C307 /* sellProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellProductTableViewCell.swift; sourceTree = "<group>"; };
 		E2CE7D701FF1F09600830F60 /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		E2CE7D721FF1F11F00830F60 /* searchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
+		E2CE7D741FF203C000830F60 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		E2CE7D751FF203C600830F60 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		E2CE7D761FF2041900830F60 /* banner1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner1.jpg; sourceTree = "<group>"; };
+		E2CE7D771FF2043A00830F60 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		E2DD9A171FE2CDCC005AF87B /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		E2DD9A1B1FE2DE0F005AF87B /* ImageUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadManager.swift; sourceTree = "<group>"; };
 		E2DD9A1D1FE2EC07005AF87B /* NewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,10 @@
 		E28234CB1F89512C00518894 /* Offline view */ = {
 			isa = PBXGroup;
 			children = (
+				E2CE7D771FF2043A00830F60 /* 2.jpg */,
+				E2CE7D761FF2041900830F60 /* banner1.jpg */,
+				E2CE7D751FF203C600830F60 /* 4.jpg */,
+				E2CE7D741FF203C000830F60 /* 3.jpg */,
 				E28234CC1F8957AA00518894 /* recentlyViewFooter.xib */,
 				E2E338DF1FF018D2009C5352 /* homeScreenTableViewController.swift */,
 				E20EF1861F9A7835000FA848 /* DetailCollectionViewCell.swift */,

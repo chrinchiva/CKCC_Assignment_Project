@@ -60,7 +60,24 @@ var productUserID = ["1","2","3","4","5","1","2","3","4","5","1","2","3","4","5"
     func updateTimer() {
         if(updateCounter <= 3){
             bannerPageController.currentPage = updateCounter
-            bannerImageView.image = UIImage(named: String(updateCounter+1) + ".jpg")
+            //bannerImageView.image = UIImage(named: String(updateCounter+1) + ".jpg")
+            
+            switch(updateCounter){
+            case 0:
+                bannerImageView.image = #imageLiteral(resourceName: "banner1")
+            case 1:
+                bannerImageView.image = #imageLiteral(resourceName: "banner2")
+            case 2:
+                bannerImageView.image = #imageLiteral(resourceName: "banner3")
+            case 3:
+                bannerImageView.image = #imageLiteral(resourceName: "banner4")
+            default:
+                bannerImageView.image = #imageLiteral(resourceName: "banner1")
+            }
+            
+            //bannerImageView.image = #imageLiteral(resourceName: "banner1")//UIImage(named: "banner\(updateCounter)")
+            
+            
             updateCounter = updateCounter+1
             
         }
